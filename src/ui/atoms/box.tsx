@@ -75,7 +75,7 @@ const Box: React.FC<IBoxProps> = ({
           ? `${padding}px`
           : `${paddingVertical}px ${paddingHorizontal}px`,
         backgroundColor: backgroundColor,
-        // cursor: onClick ? "pointer" : "default",
+        // cursor: onClick ? "pointer" : "default", // -> should be enabled
         overflow: "hidden"
       }}
       onClick={onClick}
