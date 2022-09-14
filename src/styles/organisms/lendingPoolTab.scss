@@ -1,0 +1,21 @@
+.organism-lendingpooltab {
+  background-color: #24244A !important;
+  border-radius: 5px !important;
+  &__tokenpair {
+    position: relative;
+    width: 100px;
+    height: 55px;
+  }
+
+  &__stakepanel {
+    position: relative;
+    border: 2px solid white;
+    padding: 2px;
+    &__maxbutton {
+      position: absolute;
+      right: 3px;
+      top: 3px;
+      bottom: 3px;
+    }
+  }
+}

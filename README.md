@@ -1,2 +1,3 @@
-# cygnus-frontend
-Frontend for CygnusDAO
+# CygnusDAO Finance
+
+Frontend for https://cygnusdao.finance

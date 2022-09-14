@@ -1,0 +1,15 @@
+.page-home {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 50px 0px;
+  
+  &__lending-pools {
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      padding: 0% 18%;
+      align-items: center;
+    }
+  }
+}

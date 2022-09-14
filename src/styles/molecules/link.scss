@@ -1,0 +1,8 @@
+.molecule-link {
+  transition: 0.5s;
+  &:hover {
+    div {
+      color: grey !important;
+    }
+  }
+}

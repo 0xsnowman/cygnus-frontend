@@ -1,0 +1,9 @@
+@import "./atoms/index.scss";
+@import "./molecules/index.scss";
+@import "./organisms/index.scss";
+@import "./pages/index.scss";
+
+body {
+  margin: 0px;
+  background-color: black;
+}

@@ -1,0 +1,29 @@
+.atom-text{
+  color: white;
+  &-title{
+    font-size: 70px;
+    font-weight: bolder;
+  }
+
+  &-caption {
+    font-size: 30px;
+    font-weight: bolder;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &-subtitle{
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &-paragraph{
+    font-size: 14px;
+    font-weight: normal;
+    color: #B39DD2;
+  }
+
+  &-center{
+    text-align: center;
+  }
+}

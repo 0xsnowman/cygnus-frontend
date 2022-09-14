@@ -1,0 +1,38 @@
+.molecule-switch {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  height: 36px;
+  width: 80px;
+  background-color: rgb(71, 71, 71);
+
+  &__cover {
+    position: absolute;
+    left: 50%;
+    right: 3px;
+    top: 3px;
+    bottom: 3px;
+    background-color: black;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px; 
+  }
+
+  &__container {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    display: flex;
+    transition: 0.4s;
+
+    &__item {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}

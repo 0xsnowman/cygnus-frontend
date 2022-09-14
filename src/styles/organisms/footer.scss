@@ -1,0 +1,12 @@
+.organism-footer {
+  background-color: transparent !important;
+  padding: 40px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid grey !important;
+
+  &__social-link {
+    display: flex;
+  }
+}
