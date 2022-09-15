@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import { Box, Flex, Text, Icon, Input } from "../atoms";
-
-import coinPng from "../../assets/icons/coin.png";
+import { Box, Flex, Text, Input } from "../atoms";
 
 import { Button } from "../molecules";
+
+import { Switch } from "../organisms";
 
 const DepositTab = () => {
   const [tabViewChannel, setTabViewChannel] = useState("borrow");
@@ -113,6 +113,7 @@ const DepositTab = () => {
             <Flex flexDirection="column" gap={1} backgroundColor="grey">
             <Box padding={20} backgroundColor="#121219">
                 <Flex flexDirection="column" gap={30}>
+                  <Switch />
                   <Text color="#AAA">AMOUNT (ETH)</Text>
                   <Box
                     borderRadius={5}
