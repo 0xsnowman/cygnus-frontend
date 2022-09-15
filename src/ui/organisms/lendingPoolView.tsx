@@ -142,7 +142,7 @@ const LendingPoolView = () => {
                 <Flex
                   justifyContent="space-between"
                   alignItems="center"
-                  height={120}
+                  height="120px"
                   gap={10}
                 >
                   <Box position="absolute" top={30} width="100px" height="55px">

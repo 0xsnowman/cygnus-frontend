@@ -177,20 +177,20 @@ const LendingPoolTab = () => {
                       borderRadius={50}
                       backgroundColor="#6869E7"
                       width="30px"
-                      height={30}
+                      height="30px"
                       justifyContent="center"
                       alignItems="center"
                     >
                       <Text>1</Text>
                     </Flex>
-                    <Flex flex={2} height={2} backgroundColor="#6869E7">
+                    <Flex flex={2} height="2px" backgroundColor="#6869E7">
                       <Box />
                     </Flex>
                     <Flex
                       borderRadius={50}
                       backgroundColor="#6869E7"
                       width="30px"
-                      height={30}
+                      height="30px"
                       justifyContent="center"
                       alignItems="center"
                     >
