@@ -21,7 +21,7 @@ interface IBoxProps {
   height?: string;
   marginLeft?: string;
   top?: number;
-  left?: number;
+  left?: number | string;
   position?: "static" | "absolute" | "relative" | "fixed" | "sticky";
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
