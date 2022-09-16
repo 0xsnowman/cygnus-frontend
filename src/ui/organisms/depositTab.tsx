@@ -67,28 +67,29 @@ const DepositTab = () => {
                 <Flex flexDirection="column" gap={30}>
                   <Text color="#AAA">AMOUNT (ETH)</Text>
                   <Box
-                    borderRadius={5}
+                    borderRadius={10}
                     borderWidth={2}
                     borderColor="white"
-                    padding={2}
+                    paddingHorizontal={15}
+                    paddingVertical={2}
                     backgroundColor="#1B1B21"
                   >
                     <Flex alignItems="center" justifyContent="space-between">
                       <Input
                         width="70%"
-                        height="45px"
+                        height="60px"
                         fontSize="25px"
                         placeholder="Enter An Amount"
                       />
                       <Box
-                        backgroundColor="black"
+                        backgroundColor="#121219"
                         borderRadius={5}
-                        borderColor="white"
+                        borderColor="#121219"
                         borderWidth={2}
-                        paddingVertical={10}
-                        paddingHorizontal={20}
+                        paddingVertical={5}
+                        paddingHorizontal={10}
                       >
-                        <Text center>MAX</Text>
+                        <Text center color="#999">MAX</Text>
                       </Box>
                     </Flex>
                   </Box>
@@ -116,28 +117,29 @@ const DepositTab = () => {
                   <Switch />
                   <Text color="#AAA">AMOUNT (ETH)</Text>
                   <Box
-                    borderRadius={5}
+                    borderRadius={10}
                     borderWidth={2}
                     borderColor="white"
-                    padding={2}
+                    paddingHorizontal={15}
+                    paddingVertical={2}
                     backgroundColor="#1B1B21"
                   >
                     <Flex alignItems="center" justifyContent="space-between">
                       <Input
                         width="70%"
-                        height="45px"
+                        height="60px"
                         fontSize="25px"
                         placeholder="Enter An Amount"
                       />
                       <Box
-                        backgroundColor="black"
+                        backgroundColor="#121219"
                         borderRadius={5}
-                        borderColor="white"
+                        borderColor="#121219"
                         borderWidth={2}
-                        paddingVertical={10}
-                        paddingHorizontal={20}
+                        paddingVertical={5}
+                        paddingHorizontal={10}
                       >
-                        <Text center>MAX</Text>
+                        <Text center color="#999">MAX</Text>
                       </Box>
                     </Flex>
                   </Box>
