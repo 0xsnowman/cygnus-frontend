@@ -1,11 +1,10 @@
 import React from "react";
 
-import { Box, Container, Flex, Icon, Text, Process } from "../atoms";
-import { Button } from "../molecules";
+import { Box, Container, Flex, Icon, Text, Process, Grid, GridItem } from "../atoms";
 
 import logoPng from "../../assets/icons/logo.png";
 import { Page } from "../molecules";
-import { DepositTab } from "../organisms";
+import { DepositTab, ActivityTab } from "../organisms";
 
 const Pool = () => {
   return (
@@ -16,8 +15,12 @@ const Pool = () => {
             <Flex alignItems="center" justifyContent="space-around" gap={20}>
               <Flex flexDirection="column" flex={1} gap={20}>
                 <Flex gap={10}>
-                  <Button backgroundColor="#073549">COVERED CALL</Button>
-                  <Button backgroundColor="#073549">V2</Button>
+                  <Box backgroundColor="#073549" padding={20}>
+                    <Text>COVERED CALL</Text>
+                  </Box>
+                  <Box backgroundColor="#073549" padding={20}>
+                    <Text>V2</Text>
+                  </Box>
                 </Flex>
                 <Text fontSize="EXTRA_LARGE">ETH-AVAX-C</Text>
                 <Flex justifyContent="space-between">
@@ -53,6 +56,7 @@ const Pool = () => {
                 </Box>
               </Flex>
             </Flex>
+            <ActivityTab />
           </Flex>
         </Box>
       </Container>
