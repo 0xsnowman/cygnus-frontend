@@ -29,7 +29,13 @@ const CarouselSlider = () => {
         </Box>
         <Box padding={20}>
           <Flex gap={20} alignItems="center" justifyContent="center">
-            <Link iconSrc={coinPng} />
+            <Box onClick={() => {
+                if (currentIndex > 0) {
+                    setCurrentIndex(currentIndex - 1);
+                }
+            }}>
+                <Link iconSrc={coinPng} />
+            </Box>
             <Flex gap={0}>
               {[0, 1, 2, 3, 4, 5, 6].map((item, index) => {
                 return (
@@ -41,13 +47,19 @@ const CarouselSlider = () => {
                       }}
                     >
                       <Box width="25px">
-                        <Process value={index === currentIndex ? 1 : 0} />
+                        <Process value={index === currentIndex ? 1 : 0} transition={0.2} />
                       </Box>
                     </Box>
                   );
               })}
             </Flex>
-            <Link iconSrc={coinPng} />
+            <Box onClick={() => {
+                if (currentIndex < 6) {
+                    setCurrentIndex(currentIndex + 1);
+                }
+            }}>
+                <Link iconSrc={coinPng} />
+            </Box>
           </Flex>
         </Box>
       </Flex>
