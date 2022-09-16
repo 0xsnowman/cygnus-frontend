@@ -4,7 +4,7 @@ import { Box, Container, Flex, Icon, Text, Process, Grid, GridItem } from "../at
 
 import logoPng from "../../assets/icons/logo.png";
 import { Page } from "../molecules";
-import { DepositTab, ActivityTab } from "../organisms";
+import { DepositTab, ActivityTab, CarouselSlider } from "../organisms";
 
 const Pool = () => {
   return (
@@ -49,6 +49,7 @@ const Pool = () => {
                   staking rewards are reinvested weekly, effectively compounding
                   the yields for depositors over time.
                 </Text>
+                <CarouselSlider />
               </Flex>
               <Flex flex={1} justifyContent="center" alignItems="center">
                 <Box padding={30}>
