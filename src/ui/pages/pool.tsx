@@ -40,7 +40,7 @@ const Pool = () => {
             <Flex justifyContent="space-around">
               <Flex flexDirection="column" flex={1} gap={20}>
                 <Text>VAULT STRATEGY</Text>
-                <Text color="#999">
+                <Text color="#999" lineHeight={1.4}>
                   The vault earns yield on its sAVAX deposits by running a
                   weekly automated sAVAX covered call strategy where it stakes
                   its sAVAX deposits in Benqi and then uses its sAVAX to
