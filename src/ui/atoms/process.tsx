@@ -4,9 +4,10 @@ interface IProcess {
   value: number;
   height?: number;
   borderRadius?: number;
+  transition?: number;
 }
 
-const Process: React.FC<IProcess> = ({ value, height = 2, borderRadius = 0 }) => {
+const Process: React.FC<IProcess> = ({ value, height = 2, borderRadius = 0, transition = 0.4, }) => {
   return (
     <div className="atom-process" style={{
       borderRadius: borderRadius
@@ -16,7 +17,8 @@ const Process: React.FC<IProcess> = ({ value, height = 2, borderRadius = 0 }) =>
         style={{
           width: `${value * 100}%`,
           height: height,
-          borderRadius: borderRadius
+          borderRadius: borderRadius,
+          transition: `${transition}s`
         }}
       ></div>
     </div>
