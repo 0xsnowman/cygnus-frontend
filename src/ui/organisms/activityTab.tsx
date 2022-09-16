@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Box, Text, Grid, Process, GridItem, Icon, Flex } from "../atoms";
 
@@ -10,11 +10,17 @@ import coinPng from "../../assets/icons/coin.png";
 import logoPng from "../../assets/icons/logo.png";
 
 const ActivityTab = () => {
+  const [currentPageIndex, setCurrentPageIndex] = useState<number>(1);
+  const [totalItemCount, setTotalItemCount] = useState<number>(36);
+  const [itemCountPerPage, setitemCountPerPage] = useState<number>(4);
   return (
     <Box className="organism-activitytab">
-      <Flex>
-        <Text>VAULT ACTIVITIES</Text>
-      </Flex>
+      <Box height="20px" />
+      <Box paddingVertical={30}>
+        <Flex>
+          <Text>VAULT ACTIVITIES</Text>
+        </Flex>
+      </Box>
       <Box padding={20}>
         <Grid gap={Dimension.GAP.LARGE}>
           <GridItem columns={3}>
@@ -53,7 +59,7 @@ const ActivityTab = () => {
               <Flex flexDirection="column" gap={10}>
                 <Text>O-WETH 9/16 CALL</Text>
                 <Text fontSize="EXTRA_SMALL" color="#999">
-                  Strike 2200
+                  {`Strike 2200 : Page ${currentPageIndex + 1}`}
                 </Text>
               </Flex>
             </GridItem>
@@ -91,7 +97,7 @@ const ActivityTab = () => {
               <Flex flexDirection="column" gap={10}>
                 <Text>O-WETH 9/16 CALL</Text>
                 <Text fontSize="EXTRA_SMALL" color="#999">
-                  Strike 2200
+                  {`Strike 2200 : Page ${currentPageIndex + 1}`}
                 </Text>
               </Flex>
             </GridItem>
@@ -126,7 +132,7 @@ const ActivityTab = () => {
               <Flex flexDirection="column" gap={10}>
                 <Text>O-WETH 9/16 CALL</Text>
                 <Text fontSize="EXTRA_SMALL" color="#999">
-                  Strike 2200
+                  {`Strike 2200 : Page ${currentPageIndex + 1}`}
                 </Text>
               </Flex>
             </GridItem>
@@ -164,7 +170,7 @@ const ActivityTab = () => {
               <Flex flexDirection="column" gap={10}>
                 <Text>O-WETH 9/16 CALL</Text>
                 <Text fontSize="EXTRA_SMALL" color="#999">
-                  Strike 2200
+                  {`Strike 2200 : Page ${currentPageIndex + 1}`}
                 </Text>
               </Flex>
             </GridItem>
@@ -183,16 +189,37 @@ const ActivityTab = () => {
           </Grid>
         </Box>
       </Flex>
-      <Flex alignItems="center" gap={40} paddingVertical={40} justifyContent="center">
-        <Link iconSrc={coinPng} />
+      <Flex
+        alignItems="center"
+        gap={40}
+        paddingVertical={40}
+        justifyContent="center"
+      >
+        <Box
+          onClick={() => {
+            if (currentPageIndex > 0) {
+              setCurrentPageIndex(currentPageIndex - 1);
+            }
+          }}
+        >
+          <Link iconSrc={coinPng} />
+        </Box>
         <Flex gap={7} alignItems="center">
           <Text fontSize="EXTRA_SMALL">01</Text>
           <Box width="100px">
-            <Process value={0.1} />
+            <Process value={0.1 * (currentPageIndex + 1)} />
           </Box>
           <Text fontSize="EXTRA_SMALL">10</Text>
         </Flex>
-        <Link iconSrc={coinPng} />
+        <Box
+          onClick={() => {
+            if ((currentPageIndex + 1) * itemCountPerPage < totalItemCount) {
+              setCurrentPageIndex(currentPageIndex + 1);
+            }
+          }}
+        >
+          <Link iconSrc={coinPng} />
+        </Box>
       </Flex>
     </Box>
   );
