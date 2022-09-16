@@ -5,5 +5,5 @@ import Page from './page';
 export {
     Button,
     Link,
-    Page
+    Page,
 }

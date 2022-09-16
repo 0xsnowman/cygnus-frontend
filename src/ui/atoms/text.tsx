@@ -8,6 +8,7 @@ interface ITextProps {
   fontWeight?: "BOLDER" | "BOLD" | "NORMAL" | "SICK";
   color?: string;
   center?: boolean;
+  lineHeight?: number;
 }
 
 const Text: React.FC<ITextProps> = ({
@@ -15,7 +16,8 @@ const Text: React.FC<ITextProps> = ({
   fontSize = "SMALL",
   fontWeight = "NORMAL",
   center,
-  color = "white"
+  color = "white",
+  lineHeight = 1,
 }) => {
   return (
     <div
@@ -23,7 +25,8 @@ const Text: React.FC<ITextProps> = ({
         fontSize: DIMENSION.FONT_SIZE[fontSize],
         fontWeight: DIMENSION.FONT_WEIGHT[fontWeight],
         textAlign: center ? "center" : "initial",
-        color: color
+        color: color,
+        lineHeight: lineHeight
       }}
     >
       {children}
