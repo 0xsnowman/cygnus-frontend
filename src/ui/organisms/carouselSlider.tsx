@@ -4,7 +4,8 @@ import { Box, Text, Flex, Process } from "../atoms";
 
 import { Link } from "../molecules";
 
-import coinPng from "../../assets/icons/coin.png";
+import leftArrowSvg from "../../assets/images/left.svg";
+import rightArrowSvg from "../../assets/images/right.svg";
 
 const CarouselSlider = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -29,12 +30,12 @@ const CarouselSlider = () => {
         </Box>
         <Box padding={20}>
           <Flex gap={20} alignItems="center" justifyContent="center">
-            <Box onClick={() => {
+            <Box backgroundColor="#1B1B21" padding={10} borderRadius={30} onClick={() => {
                 if (currentIndex > 0) {
                     setCurrentIndex(currentIndex - 1);
                 }
             }}>
-                <Link iconSrc={coinPng} />
+                <Link iconSrc={leftArrowSvg} />
             </Box>
             <Flex gap={0}>
               {[0, 1, 2, 3, 4, 5, 6].map((item, index) => {
@@ -53,12 +54,12 @@ const CarouselSlider = () => {
                   );
               })}
             </Flex>
-            <Box onClick={() => {
+            <Box backgroundColor="#1B1B21" padding={10} borderRadius={30} onClick={() => {
                 if (currentIndex < 6) {
                     setCurrentIndex(currentIndex + 1);
                 }
             }}>
-                <Link iconSrc={coinPng} />
+                <Link iconSrc={rightArrowSvg} />
             </Box>
           </Flex>
         </Box>

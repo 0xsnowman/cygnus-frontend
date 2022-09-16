@@ -9,6 +9,9 @@ import Dimension from "../../config/dimension";
 import coinPng from "../../assets/icons/coin.png";
 import logoPng from "../../assets/icons/logo.png";
 
+import leftArrowSvg from "../../assets/images/left.svg";
+import rightArrowSvg from "../../assets/images/right.svg";
+
 const ActivityTab = () => {
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(1);
   const [totalItemCount, setTotalItemCount] = useState<number>(36);
@@ -196,13 +199,16 @@ const ActivityTab = () => {
         justifyContent="center"
       >
         <Box
+          backgroundColor="#1B1B21"
+          padding={10}
+          borderRadius={30}
           onClick={() => {
             if (currentPageIndex > 0) {
               setCurrentPageIndex(currentPageIndex - 1);
             }
           }}
         >
-          <Link iconSrc={coinPng} />
+          <Link iconSrc={leftArrowSvg} />
         </Box>
         <Flex gap={7} alignItems="center">
           <Text fontSize="EXTRA_SMALL">01</Text>
@@ -212,13 +218,16 @@ const ActivityTab = () => {
           <Text fontSize="EXTRA_SMALL">10</Text>
         </Flex>
         <Box
+          backgroundColor="#1B1B21"
+          padding={10}
+          borderRadius={30}
           onClick={() => {
             if ((currentPageIndex + 1) * itemCountPerPage < totalItemCount) {
               setCurrentPageIndex(currentPageIndex + 1);
             }
           }}
         >
-          <Link iconSrc={coinPng} />
+          <Link iconSrc={rightArrowSvg} />
         </Box>
       </Flex>
     </Box>
