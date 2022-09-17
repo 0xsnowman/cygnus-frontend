@@ -37,8 +37,8 @@ const LendingPoolCard = () => {
             alignItems="center"
           >
             <Box
-              backgroundColor="rgba(239, 68, 68, 0.16)"
-              borderRadius={Dimension.BORDER_RADIUS.MEDIUM}
+              backgroundColor="#8a2829"
+              borderRadius={Dimension.BORDER_RADIUS.SMALL}
               paddingHorizontal={Dimension.PADDING.MEDIUM}
               paddingVertical={Dimension.PADDING.SMALL}
               border="1px solid rgb(239, 68, 68)"
@@ -55,7 +55,7 @@ const LendingPoolCard = () => {
           >
             <Box
               backgroundColor="#8a2829"
-              borderRadius={Dimension.BORDER_RADIUS.MEDIUM}
+              borderRadius={Dimension.BORDER_RADIUS.SMALL}
               paddingHorizontal={Dimension.PADDING.MEDIUM}
               paddingVertical={Dimension.PADDING.SMALL}
             >
@@ -78,14 +78,14 @@ const LendingPoolCard = () => {
 
           <Grid>
             <GridItem columns={12}>
-              <Flex flexDirection="column">
-                <Text color="gray" fontSize="EXTRA_SMALL" fontWeight="SICK">
-                  Total Projected USDC APR ⓘ
-                </Text>
-                <Box paddingVertical={8}>
-                  <Text fontSize="MEDIUM">12.45%</Text>
-                </Box>
-              </Flex>
+              <Text color="gray" fontSize="EXTRA_SMALL" fontWeight="SICK">
+                Total Projected USDC APR ⓘ
+              </Text>
+            </GridItem>
+            <GridItem columns={12}>
+              <Box paddingVertical={8}>
+                <Text fontSize="MEDIUM">12.45%</Text>
+              </Box>
             </GridItem>
           </Grid>
           <Box padding={Dimension.PADDING.SMALL} />
@@ -124,30 +124,157 @@ const LendingPoolCard = () => {
             </GridItem>
 
             <GridItem columns={4}>
-              <Flex flexDirection="column">
+              <Text
+                center
+                color="gray"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                LP Token Price
+              </Text>
+              <Box padding={8}>
                 <Text
                   center
-                  color="gray"
                   fontSize="EXTRA_SMALL"
+                  color="rgb(22, 206, 185)"
                   fontWeight="SICK"
                 >
-                  LP Token Price
+                  $4.24
                 </Text>
-                <Box padding={8}>
-                  <Text
-                    center
-                    fontSize="EXTRA_SMALL"
-                    color="rgb(22, 206, 185)"
-                    fontWeight="SICK"
-                  >
-                    $4.24
-                  </Text>
-                </Box>
-              </Flex>
+              </Box>
+            </GridItem>
+          </Grid>
+          <Box padding={Dimension.PADDING.SMALL} />
+          <Grid>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="whitesmoke"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                USDC
+              </Text>
+            </GridItem>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="gray"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                Asset
+              </Text>
+            </GridItem>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="whitesmoke"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                ETH/AVAX LP
+              </Text>
+            </GridItem>
+          </Grid>
+          <Grid>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="whitesmoke"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                12.45%
+              </Text>
+            </GridItem>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="gray"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                APR
+              </Text>
+            </GridItem>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="whitesmoke"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                10.94%
+              </Text>
+            </GridItem>
+          </Grid>
+          <Grid>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="whitesmoke"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                1.0123
+              </Text>
+            </GridItem>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="gray"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                Exchange Rate
+              </Text>
+            </GridItem>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="whitesmoke"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                1.1234
+              </Text>
+            </GridItem>
+          </Grid>
+          <Grid>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="whitesmoke"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                --
+              </Text>
+            </GridItem>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="gray"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                Max Leverage
+              </Text>
+            </GridItem>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="whitesmoke"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                13x
+              </Text>
             </GridItem>
           </Grid>
         </Flex>
-        <Box padding={Dimension.PADDING.MEDIUM} />
+        <Box padding={Dimension.PADDING.SMALL} />
         <Flex flexDirection="column">
           <Flex flexDirection="column" justifyContent="space-between">
             <Text color="gray" fontSize="EXTRA_SMALL" fontWeight="SICK">
@@ -161,7 +288,19 @@ const LendingPoolCard = () => {
             </Text>
           </Flex>
         </Flex>
+        <Box paddingVertical={Dimension.PADDING.MEDIUM} />
       </Box>
+      <Box backgroundColor="#0d0d1f" padding={Dimension.PADDING.MEDIUM}>
+        <Flex justifyContent="space-between" alignItems="center" >
+          <Text fontSize="EXTRA_SMALL" fontWeight="SICK">
+            Your Position:
+          </Text>
+          <Text fontWeight="SICK">
+            --
+          </Text>
+        </Flex>
+      </Box>
+
       <Box position="absolute" width="100%" height="100px" top={105}>
         <Flex justifyContent="flex-start">
           <TokenPair token1={btcLogo} token2={avaxLogo} />

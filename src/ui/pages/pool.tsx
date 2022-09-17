@@ -27,7 +27,7 @@ const Pool = () => {
                   <Text color="#999">Current Vault Deposits</Text>
                   <Text>13.07K AVAX</Text>
                 </Flex>
-                <Process value={0.4} height={15} borderRadius={10} />
+                <Process value={0.4} height={15} borderRadius="10" />
                 <Flex justifyContent="space-between">
                   <Text color="#999">Max Vault Capacity</Text>
                   <Text>200K AVAX</Text>
