@@ -9,8 +9,6 @@ interface ITextProps {
   color?: string;
   center?: boolean;
   lineHeight?: number;
-  textAlign?: string;
-  padding?: string;
 }
 
 const Text: React.FC<ITextProps> = ({
@@ -20,8 +18,6 @@ const Text: React.FC<ITextProps> = ({
   center,
   color = "white",
   lineHeight = 1,
-  textAlign,
-  padding,
 }) => {
   return (
     <div
@@ -31,7 +27,6 @@ const Text: React.FC<ITextProps> = ({
         textAlign: center ? "center" : "initial",
         color: color,
         lineHeight: lineHeight,
-        padding: padding
       }}
     >
       {children}

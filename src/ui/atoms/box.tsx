@@ -5,7 +5,7 @@ interface IBoxProps {
   className?: string;
   color?: string;
   display?: "block" | "inline-block" | "flex";
-  gap?: number;
+  border?: string;
   borderTop?: string;
   borderLeft?: string;
   borderRight?: string;
@@ -14,12 +14,10 @@ interface IBoxProps {
   borderWidth?: number;
   borderStyle?: "solid" | "dashed";
   borderColor?: string;
-  border?: string;
   paddingVertical?: number;
   paddingHorizontal?: number;
   padding?: number;
   backgroundColor?: string;
-  background?: string;
   width?: string;
   height?: string;
   marginLeft?: string;
@@ -36,6 +34,7 @@ const Box: React.FC<IBoxProps> = ({
   width = "auto",
   height = "auto",
   display = "block",
+  border,
   borderTop = "1px solid transparent",
   borderLeft = "1px solid transparent",
   borderRight = "1px solid transparent",
@@ -44,17 +43,14 @@ const Box: React.FC<IBoxProps> = ({
   borderWidth = 0,
   borderStyle = "solid",
   borderColor,
-  border,
   paddingVertical = 0,
   paddingHorizontal = 0,
   padding = 0,
   position = "static",
   marginLeft = "0",
   backgroundColor = "transparent",
-  background,
   top = "auto",
   left = "auto",
-  gap,
   onClick
 }) => {
   return (
@@ -69,13 +65,12 @@ const Box: React.FC<IBoxProps> = ({
         borderWidth: borderWidth,
         borderStyle: borderStyle,
         borderColor: borderColor,
+        border: border,
         borderTop: borderTop,
         borderLeft: borderLeft,
         borderRight: borderRight,
         borderBottom: borderBottom,
         borderRadius: borderRadius,
-          border: border,
-          background: background,
         top: top,
         left: left,
         marginLeft: marginLeft,
@@ -85,7 +80,6 @@ const Box: React.FC<IBoxProps> = ({
         backgroundColor: backgroundColor,
         // cursor: onClick ? "pointer" : "default", // -> should be enabled
         overflow: "hidden",
-        gap: gap
       }}
       onClick={onClick}
     >

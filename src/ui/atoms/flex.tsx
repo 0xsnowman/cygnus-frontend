@@ -24,15 +24,9 @@ interface IFlexProps {
   flex?: number;
   backgroundColor?: string;
   paddingVertical?: number;
-  paddingHorizontal?: number;
   width?: string;
   height?: string;
-  borderLeft?: string;
-  borderRight?: string;
   borderTop?: string;
-  borderBottom?: string;
-  borderColor?: string;
-  border?: string;
   position?: "static" | "relative" | "absolute" | "sticky" | "fixed";
 }
 
@@ -45,16 +39,10 @@ const Flex: React.FC<IFlexProps> = ({
   borderRadius = 5,
   backgroundColor = "transparent",
   paddingVertical = 0,
-  paddingHorizontal = 0,
   flex = "",
   width = "auto",
   height = "auto",
   borderTop = "0px",
-  borderBottom = "0px",
-  borderColor,
-  borderLeft,
-  borderRight,
-  border,
   gap = 0,
   position = "static",
 }) => {
@@ -72,17 +60,10 @@ const Flex: React.FC<IFlexProps> = ({
         justifyContent: justifyContent,
         borderRadius: borderRadius,
         borderTop: borderTop,
-        borderBottom: borderBottom,
-        borderLeft: borderLeft,
-        borderRight: borderRight,
-        borderColor: borderColor,
-          border: border,
         width: width,
         height: height,
         gap: `${gap}px`,
         position: position,
-        paddingLeft: paddingHorizontal,
-        paddingRight: paddingHorizontal,
       }}
     >
       {children}
