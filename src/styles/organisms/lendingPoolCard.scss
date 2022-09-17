@@ -1,12 +1,12 @@
 .organism-lendingpoolcard {
-  transition: 0.3s;
+  transition: 0.3s ease-out;
   cursor: pointer;
-  border-color: grey;
-  box-shadow: 0px 0px 0px #2af1ff;
+  transition: box-shadow 0.4s ease-out 0s, border 0.4s ease-out 0s;
   position: relative;
+  font-family: 'Nova Square', cursive;
 
   &:hover {
-    border-color: #2af1ff;
-    box-shadow: 0px 0px 200px #2af1ff;
+    box-shadow: 0px 0px 90px #e84142;
+    transition: ease-out 0.4s;
   }
 }

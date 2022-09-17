@@ -3,11 +3,11 @@ import React from "react";
 interface IProcess {
   value: number;
   height?: number;
-  borderRadius?: number;
+  borderRadius?: string;
   transition?: number;
 }
 
-const Process: React.FC<IProcess> = ({ value, height = 2, borderRadius = 0, transition = 0.4, }) => {
+const Process: React.FC<IProcess> = ({ value, height = 4, borderRadius, transition = 0.4, }) => {
   return (
     <div className="atom-process" style={{
       borderRadius: borderRadius
