@@ -173,11 +173,11 @@ const LendingPoolCard = () => {
                 color="whitesmoke"
                 fontSize="EXTRA_SMALL"
                 fontWeight="SICK"
-              >
-                ETH/AVAX LP
+              >ETH/AVAX LP
               </Text>
             </GridItem>
           </Grid>
+          <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
               <Text
@@ -210,6 +210,7 @@ const LendingPoolCard = () => {
               </Text>
             </GridItem>
           </Grid>
+          </Box>
           <Grid>
             <GridItem columns={4}>
               <Text
@@ -242,6 +243,7 @@ const LendingPoolCard = () => {
               </Text>
             </GridItem>
           </Grid>
+          <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
               <Text
@@ -250,7 +252,7 @@ const LendingPoolCard = () => {
                 fontSize="EXTRA_SMALL"
                 fontWeight="SICK"
               >
-                --
+                $9213.52
               </Text>
             </GridItem>
             <GridItem columns={4}>
@@ -260,7 +262,7 @@ const LendingPoolCard = () => {
                 fontSize="EXTRA_SMALL"
                 fontWeight="SICK"
               >
-                Max Leverage
+              TVL
               </Text>
             </GridItem>
             <GridItem columns={4}>
@@ -270,25 +272,35 @@ const LendingPoolCard = () => {
                 fontSize="EXTRA_SMALL"
                 fontWeight="SICK"
               >
-                13x
+                $9129
               </Text>
             </GridItem>
           </Grid>
+          </Box>
         </Flex>
-        <Box padding={Dimension.PADDING.SMALL} />
-        <Flex flexDirection="column">
+        <Box padding={Dimension.PADDING.MEDIUM} />
           <Flex flexDirection="column" justifyContent="space-between">
+            <Flex justifyContent="space-between">
+            
             <Text color="gray" fontSize="EXTRA_SMALL" fontWeight="SICK">
               Current USDC Borrows
             </Text>
+            <Text color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
+              $5238
+            </Text>
+            </Flex >
             <Box paddingVertical={8}>
               <Process value={0.4} borderRadius="20px" />
             </Box>
+            <Flex justifyContent="space-between">
             <Text color="gray" fontSize="EXTRA_SMALL" fontWeight="SICK">
               Current USDC Deposits
             </Text>
+            <Text color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
+              $9213
+            </Text>
+            </Flex>
           </Flex>
-        </Flex>
         <Box paddingVertical={Dimension.PADDING.MEDIUM} />
       </Box>
       <Box backgroundColor="#0d0d1f" padding={Dimension.PADDING.MEDIUM}>
