@@ -18,6 +18,7 @@ interface IBoxProps {
   paddingHorizontal?: number;
   padding?: number;
   backgroundColor?: string;
+  background?: string;
   width?: string;
   height?: string;
   marginLeft?: string;
@@ -49,6 +50,7 @@ const Box: React.FC<IBoxProps> = ({
   position = "static",
   marginLeft = "0",
   backgroundColor = "transparent",
+  background,
   top = "auto",
   left = "auto",
   onClick
@@ -61,6 +63,7 @@ const Box: React.FC<IBoxProps> = ({
         display: display,
         width: width,
         height: height,
+        background: background,
         position: position,
         borderWidth: borderWidth,
         borderStyle: borderStyle,

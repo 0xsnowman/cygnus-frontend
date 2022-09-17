@@ -17,13 +17,13 @@ const LendingPoolCard = () => {
   const navigate = useNavigate();
   return (
     <Box
-      border="3px solid #030309"
       className="organism-lendingpoolcard"
       borderRadius={Dimension.BORDER_RADIUS.LARGE}
       position="relative"
       onClick={() => {
         navigate("/1");
       }}
+      border="2px solid #030309"
     >
       <Box
         backgroundColor="#2d0e13"
@@ -41,7 +41,7 @@ const LendingPoolCard = () => {
               borderRadius={Dimension.BORDER_RADIUS.SMALL}
               paddingHorizontal={Dimension.PADDING.MEDIUM}
               paddingVertical={Dimension.PADDING.SMALL}
-              border="1px solid rgb(239, 68, 68)"
+              border="2px solid rgb(239, 68, 68)"
             >
               <Text center fontSize="EXTRA_SMALL" fontWeight="SICK">
                 TRADER JOE
@@ -58,6 +58,7 @@ const LendingPoolCard = () => {
               borderRadius={Dimension.BORDER_RADIUS.SMALL}
               paddingHorizontal={Dimension.PADDING.MEDIUM}
               paddingVertical={Dimension.PADDING.SMALL}
+              border="2px solid #8a2829"
             >
               <Text center fontSize="EXTRA_SMALL" fontWeight="SICK">
                 MCV3
@@ -301,7 +302,7 @@ const LendingPoolCard = () => {
         </Flex>
       </Box>
 
-      <Box position="absolute" width="100%" height="100px" top={105}>
+      <Box position="absolute" width="100%" height="100px" top={105} paddingHorizontal={Dimension.PADDING.SMALL}>
         <Flex justifyContent="flex-start">
           <TokenPair token1={btcLogo} token2={avaxLogo} />
         </Flex>

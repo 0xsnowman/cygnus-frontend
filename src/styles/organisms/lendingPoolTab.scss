@@ -1,6 +1,8 @@
 .organism-lendingpooltab {
-  background-color: #24244A !important;
   border-radius: 5px !important;
+  font-family: "Nova Square", cursive;
+  border: 2px solid #030309;
+
   &__tokenpair {
     position: relative;
     width: 100px;
@@ -20,5 +22,8 @@
   }
   &:hover { 
     cursor: pointer;
+    box-shadow: 0px 0px 90px rgb(239, 68, 68);
+    transition: ease-out 0.4s;
+    border: 2px solid #e84142;
   }
 }

@@ -4,6 +4,8 @@ import { Box, Flex, Text, Input } from "../atoms";
 import { Link } from "../molecules";
 
 import coinPng from "../../assets/icons/coin.png";
+import avaxLogo from "../../assets/icons/avax-logo.png";
+import btcLogo from "../../assets/icons/btc-logo.png";
 
 // import { Icons } from "../../assets";
 
@@ -11,6 +13,7 @@ import coinPng from "../../assets/icons/coin.png";
 import TokenPair from "../molecules/tokenPair";
 import { Button } from "../molecules";
 import { useNavigate } from "react-router-dom";
+import Dimension from "../../config/dimension";
 
 const LendingPoolTab = () => {
   const [tabViewChannel, setTabViewChannel] = useState("stake");
@@ -19,14 +22,41 @@ const LendingPoolTab = () => {
 
   return (
     <Box className="organism-lendingpooltab">
-      <Box padding={15} position="relative" onClick={() => {navigate("/1")}}>
-          {/* onClick={() => {setCollapsedView(!collapsedView)}} */}
+      <Box
+        background="linear-gradient(90deg, #8a2829 -20%, #030309 25%)"
+        padding={Dimension.PADDING.SMALL}
+        position="relative"
+        onClick={() => {
+          navigate("/1");
+        }}
+      >
+        {/* onClick={() => {setCollapsedView(!collapsedView)}} */}
         <Flex justifyContent="space-between" alignItems="center">
-          <Box position="absolute" top={7} width="100px" height="55px">
-            <TokenPair token1={coinPng} token2={coinPng} />
-          </Box>
-          <Box />
-          <Box />
+          <Flex>
+            <Box>
+              <TokenPair token1={avaxLogo} token2={btcLogo} />
+            </Box>
+            <Flex flexDirection="column">
+              <Box paddingHorizontal={20}>
+              <Box padding={Dimension.PADDING.SMALL}>
+                <Text center fontSize="SMALL">
+                  AVAX/BTC
+                </Text>
+              </Box>
+              <Box
+                backgroundColor="#8a2829"
+                borderRadius={Dimension.BORDER_RADIUS.SMALL}
+                paddingHorizontal={Dimension.PADDING.SMALL}
+                paddingVertical={Dimension.PADDING.EXTRA_SMALL}
+                border="1px solid rgb(239, 68, 68)"
+              >
+                <Text center fontSize="EXTRA_SMALL" fontWeight="SICK">
+                  TRADER JOE
+                </Text>
+              </Box>
+              </Box>
+            </Flex>
+          </Flex>
           <Flex flexDirection="column">
             <Text>VTX</Text>
             <Text>STAKE VTX</Text>
