@@ -22,6 +22,8 @@ interface IBoxProps {
   marginLeft?: string;
   top?: number;
   left?: number | string;
+  opacity?: number;
+  transition?: number;
   position?: "static" | "absolute" | "relative" | "fixed" | "sticky";
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
@@ -49,6 +51,8 @@ const Box: React.FC<IBoxProps> = ({
   backgroundColor = "transparent",
   top = "auto",
   left = "auto",
+  opacity = 1,
+  transition = 0.5,
   onClick
 }) => {
   return (
@@ -70,6 +74,8 @@ const Box: React.FC<IBoxProps> = ({
         borderRadius: borderRadius,
         top: top,
         left: left,
+        opacity: opacity,
+        transition: `${transition}s`,
         marginLeft: marginLeft,
         padding: padding
           ? `${padding}px`
