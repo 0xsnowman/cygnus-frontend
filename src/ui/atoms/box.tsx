@@ -25,6 +25,7 @@ interface IBoxProps {
   top?: number;
   left?: number | string;
   opacity?: number;
+  overflow?: "auto" | "hidden" | "inherit" | "initial" | "revert" | "scroll" | "unset" | "visible";
   transition?: number;
   position?: "static" | "absolute" | "relative" | "fixed" | "sticky";
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
@@ -56,6 +57,7 @@ const Box: React.FC<IBoxProps> = ({
   top = "auto",
   left = "auto",
   opacity = 1,
+  overflow = "hidden",
   transition = 0.5,
   onClick
 }) => {
@@ -88,7 +90,7 @@ const Box: React.FC<IBoxProps> = ({
           : `${paddingVertical}px ${paddingHorizontal}px`,
         backgroundColor: backgroundColor,
         // cursor: onClick ? "pointer" : "default", // -> should be enabled
-        overflow: "hidden",
+        overflow: overflow,
       }}
       onClick={onClick}
     >
