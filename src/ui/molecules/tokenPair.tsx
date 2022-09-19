@@ -10,10 +10,10 @@ interface ITokenPairProps {
 const TokenPair: React.FC<ITokenPairProps> = ({ token1, token2 }) => {
   return (
     <Flex justifyContent="center" backgroundColor="transparent">
-      <Box>
+      <Box >
         <Icon size="TOKEN" src={token1} border="MEDIUM" />
       </Box>
-      <Box marginLeft="-10px">
+      <Box marginLeft="-18px">
         <Icon size="TOKEN" src={token2} border="MEDIUM" />
       </Box>
     </Flex>

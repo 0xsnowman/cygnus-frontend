@@ -4,6 +4,8 @@ import { Box, Flex, Text, Input } from "../atoms";
 import { Link } from "../molecules";
 
 import coinPng from "../../assets/icons/coin.png";
+import avaxLogo from "../../assets/icons/avax-logo.png";
+import btcLogo from "../../assets/icons/btc-logo.png";
 
 // import { Icons } from "../../assets";
 
@@ -11,6 +13,7 @@ import coinPng from "../../assets/icons/coin.png";
 import TokenPair from "../molecules/tokenPair";
 import { Button } from "../molecules";
 import { useNavigate } from "react-router-dom";
+import Dimension from "../../config/dimension";
 
 const LendingPoolTab = () => {
   const [tabViewChannel, setTabViewChannel] = useState("stake");
@@ -19,30 +22,165 @@ const LendingPoolTab = () => {
 
   return (
     <Box className="organism-lendingpooltab">
-      <Box padding={15} position="relative" onClick={() => {navigate("/1")}}>
-          {/* onClick={() => {setCollapsedView(!collapsedView)}} */}
+      <Box
+        background="linear-gradient(90deg, #8a2829 -20%, #030309 25%)"
+        padding={Dimension.PADDING.SMALL}
+        position="relative"
+        onClick={() => {
+          navigate("/1");
+        }}
+      >
+        {/* onClick={() => {setCollapsedView(!collapsedView)}} */}
         <Flex justifyContent="space-between" alignItems="center">
-          <Box position="absolute" top={7} width="100px" height="55px">
-            <TokenPair token1={coinPng} token2={coinPng} />
+          <Flex>
+            <Box>
+              <TokenPair token1={avaxLogo} token2={btcLogo} />
+            </Box>
+            <Flex flexDirection="column">
+              <Box paddingHorizontal={20}>
+                <Box padding={Dimension.PADDING.SMALL}>
+                  <Text center fontSize="SMALL">
+                    AVAX/BTC
+                  </Text>
+                </Box>
+                <Box
+                  backgroundColor="#8a2829"
+                  borderRadius={Dimension.BORDER_RADIUS.SMALL}
+                  paddingHorizontal={Dimension.PADDING.SMALL}
+                  paddingVertical={Dimension.PADDING.EXTRA_SMALL}
+                  border="2px solid rgb(239, 68, 68)"
+                >
+                  <Text center fontSize="EXTRA_SMALL" fontWeight="SICK">
+                    TRADER JOE
+                  </Text>
+                </Box>
+              </Box>
+            </Flex>
+          </Flex>
+          <Flex flexDirection="column">
+            <Box padding={Dimension.PADDING.SMALL}>
+              <Text
+                center
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+                color="whitesmoke"
+              >
+                Projected USDC APR ⓘ
+              </Text>
+            </Box>
+            <Box
+              paddingHorizontal={Dimension.PADDING.SMALL}
+              paddingVertical={Dimension.PADDING.EXTRA_SMALL}
+            >
+              <Text center fontSize="EXTRA_SMALL" fontWeight="SICK">
+                4.24%
+              </Text>
+            </Box>
+          </Flex>
+          <Flex flexDirection="column">
+            <Box padding={Dimension.PADDING.SMALL}>
+              <Text center fontSize="EXTRA_SMALL" fontWeight="SICK">
+                3x Leverage APR
+              </Text>
+            </Box>
+            <Box
+              paddingHorizontal={Dimension.PADDING.SMALL}
+              paddingVertical={Dimension.PADDING.EXTRA_SMALL}
+            >
+              <Text center fontSize="EXTRA_SMALL" fontWeight="SICK">
+                14.24%
+              </Text>
+            </Box>
+          </Flex>
+          <Flex flexDirection="column" height="100%">
+            <Box border="1px solid white"></Box>
+          </Flex>
+          <Flex flexDirection="column">
+            <Box padding={Dimension.PADDING.SMALL}>
+              <Text center fontSize="EXTRA_SMALL" fontWeight="SICK">
+                Liq. Incentive ⓘ
+              </Text>
+            </Box>
+            <Box
+              paddingHorizontal={Dimension.PADDING.SMALL}
+              paddingVertical={Dimension.PADDING.EXTRA_SMALL}
+            >
+              <Text center fontSize="EXTRA_SMALL" fontWeight="SICK">
+                2.5%
+              </Text>
+            </Box>
+          </Flex>
+          <Flex flexDirection="column">
+            <Box padding={Dimension.PADDING.SMALL}>
+              <Text center fontSize="EXTRA_SMALL" fontWeight="SICK">
+                Debt Ratio ⓘ
+              </Text>
+            </Box>
+            <Box
+              paddingHorizontal={Dimension.PADDING.SMALL}
+              paddingVertical={Dimension.PADDING.EXTRA_SMALL}
+            >
+              <Text center fontSize="EXTRA_SMALL" fontWeight="SICK">
+                95%
+              </Text>
+            </Box>
+          </Flex>
+          <Flex flexDirection="column">
+            <Box padding={Dimension.PADDING.SMALL}>
+              <Text
+                center
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+                color="whitesmoke"
+              >
+                LP Token Price ⓘ
+              </Text>
+            </Box>
+            <Box
+              paddingHorizontal={Dimension.PADDING.SMALL}
+              paddingVertical={Dimension.PADDING.EXTRA_SMALL}
+            >
+              <Text
+                center
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+                color="rgb(22, 206, 185)"
+              >
+                $4.25
+              </Text>
+            </Box>
+          </Flex>
+          <Flex flexDirection="column" height="100%">
+            <Box border="1px solid white"></Box>
+          </Flex>
+          <Flex flexDirection="column">
+            <Box padding={Dimension.PADDING.SMALL}>
+              <Text center fontSize="EXTRA_SMALL">
+                TVL
+              </Text>
+            </Box>
+            <Box
+              paddingHorizontal={Dimension.PADDING.SMALL}
+              paddingVertical={Dimension.PADDING.EXTRA_SMALL}
+            >
+              <Text center fontSize="EXTRA_SMALL">
+                $42,521.27
+              </Text>
+            </Box>
+          </Flex>
+          <Box>
+            <svg
+              stroke="currentColor"
+              fill="grey"
+              stroke-width="0"
+              viewBox="0 0 192 512"
+              height="16"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"></path>
+            </svg>
           </Box>
-          <Box />
-          <Box />
-          <Flex flexDirection="column">
-            <Text>VTX</Text>
-            <Text>STAKE VTX</Text>
-          </Flex>
-          <Flex flexDirection="column">
-            <Text>APR</Text>
-            <Text>4.2%</Text>
-          </Flex>
-          <Flex flexDirection="column">
-            <Text>STAKE VTX</Text>
-            <Text>0.0VTX</Text>
-          </Flex>
-          <Flex flexDirection="column">
-            <Text>TVL</Text>
-            <Text>$4.2M</Text>
-          </Flex>
         </Flex>
       </Box>
       {/* <Box height={collapsedView ? "0px" : "200px"}> */}

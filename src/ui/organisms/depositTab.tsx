@@ -89,7 +89,9 @@ const DepositTab = () => {
                         paddingVertical={5}
                         paddingHorizontal={10}
                       >
-                        <Text center color="#999">MAX</Text>
+                        <Text center color="#999">
+                          MAX
+                        </Text>
                       </Box>
                     </Flex>
                   </Box>
@@ -97,7 +99,9 @@ const DepositTab = () => {
                     <Text color="#AAA">Wallet Balance</Text>
                     <Text>0 ETH</Text>
                   </Flex>
-                  <Button backgroundColor="#161822" color="#46639B">CONNECT WALLET</Button>
+                  <Button backgroundColor="#161822" color="#46639B">
+                    CONNECT WALLET
+                  </Button>
                   <Text color="#46639B">
                     Your deposit will be deployed in the vault’s weekly strategy
                     on Friday at 11am UTC
@@ -112,7 +116,7 @@ const DepositTab = () => {
         {tabViewChannel === "lend" ? (
           <Box backgroundColor="#121219" padding={20}>
             <Flex flexDirection="column" gap={1} backgroundColor="grey">
-            <Box padding={20} backgroundColor="#121219">
+              <Box padding={20} backgroundColor="#121219">
                 <Flex flexDirection="column" gap={30}>
                   <Switch />
                   <Text color="#AAA">AMOUNT (ETH)</Text>
@@ -139,7 +143,9 @@ const DepositTab = () => {
                         paddingVertical={5}
                         paddingHorizontal={10}
                       >
-                        <Text center color="#999">MAX</Text>
+                        <Text center color="#999">
+                          MAX
+                        </Text>
                       </Box>
                     </Flex>
                   </Box>
@@ -147,7 +153,9 @@ const DepositTab = () => {
                     <Text color="#AAA">Instant Withdraw Limit</Text>
                     <Text>0 ETH</Text>
                   </Flex>
-                  <Button backgroundColor="#161822" color="#46639B">WITHDRAW ETH</Button>
+                  <Button backgroundColor="#161822" color="#46639B">
+                    WITHDRAW ETH
+                  </Button>
                 </Flex>
               </Box>
             </Flex>

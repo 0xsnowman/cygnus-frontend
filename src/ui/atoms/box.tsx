@@ -5,6 +5,7 @@ interface IBoxProps {
   className?: string;
   color?: string;
   display?: "block" | "inline-block" | "flex";
+  border?: string;
   borderTop?: string;
   borderLeft?: string;
   borderRight?: string;
@@ -17,6 +18,7 @@ interface IBoxProps {
   paddingHorizontal?: number;
   padding?: number;
   backgroundColor?: string;
+  background?: string;
   width?: string;
   height?: string;
   marginLeft?: string;
@@ -35,6 +37,7 @@ const Box: React.FC<IBoxProps> = ({
   width = "auto",
   height = "auto",
   display = "block",
+  border,
   borderTop = "1px solid transparent",
   borderLeft = "1px solid transparent",
   borderRight = "1px solid transparent",
@@ -49,6 +52,7 @@ const Box: React.FC<IBoxProps> = ({
   position = "static",
   marginLeft = "0",
   backgroundColor = "transparent",
+  background,
   top = "auto",
   left = "auto",
   opacity = 1,
@@ -63,6 +67,7 @@ const Box: React.FC<IBoxProps> = ({
         display: display,
         width: width,
         height: height,
+        background: background,
         position: position,
         borderWidth: borderWidth,
         borderStyle: borderStyle,
@@ -72,6 +77,7 @@ const Box: React.FC<IBoxProps> = ({
         borderRight: borderRight,
         borderBottom: borderBottom,
         borderRadius: borderRadius,
+          border: border,
         top: top,
         left: left,
         opacity: opacity,
@@ -82,7 +88,7 @@ const Box: React.FC<IBoxProps> = ({
           : `${paddingVertical}px ${paddingHorizontal}px`,
         backgroundColor: backgroundColor,
         // cursor: onClick ? "pointer" : "default", // -> should be enabled
-        overflow: "hidden"
+        overflow: "hidden",
       }}
       onClick={onClick}
     >

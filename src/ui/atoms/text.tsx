@@ -26,7 +26,7 @@ const Text: React.FC<ITextProps> = ({
         fontWeight: DIMENSION.FONT_WEIGHT[fontWeight],
         textAlign: center ? "center" : "initial",
         color: color,
-        lineHeight: lineHeight
+        lineHeight: lineHeight,
       }}
     >
       {children}

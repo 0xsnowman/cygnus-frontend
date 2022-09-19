@@ -13,7 +13,7 @@ const Home = () => {
     <Page>
       <Container>
         <Flex flexDirection="column" gap={Dimension.GAP.LARGE}>
-          <Flex flexDirection="column" justifyContent="flex-end" alignItems="center" gap={30}>
+          <Flex flexDirection="column" justifyContent="flex-end" alignItems="center" gap={10}>
             <Text center fontSize="EXTRA_LARGE" fontWeight="BOLD">
               Lending Pool
             </Text>
@@ -58,7 +58,7 @@ const Home = () => {
               </GridItem>
             </Grid>
           ) : (
-            <Flex flexDirection="column" gap={30}>
+            <Flex flexDirection="column" gap={10}>
               <LendingPoolTab />
               <LendingPoolTab />
               <LendingPoolTab />
