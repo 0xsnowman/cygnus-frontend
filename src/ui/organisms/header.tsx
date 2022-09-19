@@ -8,8 +8,15 @@ import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
 
 const Header = () => {
   const context = useWeb3React();
-  const { library, chainId, account, activate, deactivate, active, error } =
-    context;
+  const {
+    library,
+    chainId,
+    account,
+    activate,
+    deactivate,
+    active,
+    error
+  } = context;
   // const [ethBalance, setETHBalance] = useState();
 
   const metamaskConnect = () => {
@@ -17,7 +24,7 @@ const Header = () => {
       deactivate();
     } else {
       const metamaskConnector = new InjectedConnector({
-        supportedChainIds: [43113, 43114],
+        supportedChainIds: [43113, 43114]
       });
       activate(metamaskConnector);
     }
@@ -94,7 +101,13 @@ const Header = () => {
                 >
                   STAKING
                 </Link>
-                <Link>PORTFOLIO</Link>
+                <Link
+                  onClick={() => {
+                    navigate("/portfolio");
+                  }}
+                >
+                  PORTFOLIO
+                </Link>
                 <Link>GOVERNANCE</Link>
               </Flex>
             </Box>

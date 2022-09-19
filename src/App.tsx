@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // pages
 import Home from "./ui/pages/home";
 import Pool from "./ui/pages/pool";
+import Portfolio from "./ui/pages/portfolio";
 
 // header && footer
 import Header from "./ui/organisms/header";
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/stake" element={<Stake />} />
         <Route path="/:poolId" element={<Pool />} />
+        <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
       <Footer />
     </BrowserRouter>
