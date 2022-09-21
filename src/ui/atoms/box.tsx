@@ -53,7 +53,7 @@ const Box: React.FC<IBoxProps> = ({
   background,
   top = "auto",
   left = "auto",
-  onClick
+  onClick,
 }) => {
   return (
     <div
@@ -73,7 +73,7 @@ const Box: React.FC<IBoxProps> = ({
         borderRight: borderRight,
         borderBottom: borderBottom,
         borderRadius: borderRadius,
-          border: border,
+        border: border,
         top: top,
         left: left,
         marginLeft: marginLeft,

@@ -14,6 +14,7 @@ const PADDING = {
 const ICON = {
   SMALL: 4,
   MEDIUM: 8,
+  SEMI_MEDIUM: 16,
   LARGE: 24,
   TOKEN: 50,
   LINK: 30,
@@ -45,7 +46,8 @@ const BORDER = {
 const BORDER_RADIUS = {
   SMALL: 4,
   MEDIUM: 8,
-  LARGE: 12
+  LARGE: 12,
+  EXTRA_LARGE: 24,
 };
 
 const DIMENSION = {
