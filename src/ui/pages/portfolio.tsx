@@ -2,13 +2,47 @@ import React, { useState } from "react";
 
 import { Box, Container, Flex, Text, Grid, GridItem } from "../atoms";
 
-import { Page } from "../molecules";
-import { LendingPoolCard, LendingPoolTab } from "../organisms";
+import { Page, PlotChart } from "../molecules";
+import { LendingPoolCard } from "../organisms";
 
 import Dimension from "../../config/dimension";
 
 const Portfolio = () => {
   const [availablePositions, setAvailablePositions] = useState(["abc"]);
+  const plugin = {
+    id: 'custom_canvas_background_color',
+    beforeDraw: (chart:any) => {
+      const {ctx} = chart;
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-over';
+      ctx.fillStyle = '#181821';
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    }
+  };
+  const config = {
+    type: 'line',
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+      datasets: [
+        {
+          label: "$ Portfolio",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [2478,5267,734,784,433]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Portfolio Summary"
+      },
+      borderColor: "#0085FF",
+      color: "#666",
+    },
+    plugins: [plugin]
+  };
+
   return (
     <Page>
       <Container>
@@ -73,8 +107,11 @@ const Portfolio = () => {
                       </Text>
                     </Flex>
                   </Flex>
-                  <Box>{/* Chart part */}</Box>
-                  <Box paddingVertical={50}></Box>
+                  <Box>
+                    <Box paddingVertical={7}></Box>
+                    <PlotChart type={config.type} data={config.data} options={config.options} plugins={config.plugins} />
+                  </Box>
+                  <Box paddingVertical={10}></Box>
                   <Box>
                     <Flex justifyContent="space-between">
                       <Flex flexDirection="column" gap={5}>
