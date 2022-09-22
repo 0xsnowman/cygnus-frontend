@@ -7,6 +7,7 @@ const GAP = {
 const PADDING = {
   EXTRA_SMALL: 4,
   SMALL: 8,
+  SEMI_SMALL: 12,
   MEDIUM: 16,
   LARGE: 24
 };
@@ -47,7 +48,7 @@ const BORDER_RADIUS = {
   SMALL: 4,
   MEDIUM: 8,
   LARGE: 12,
-  EXTRA_LARGE: 24,
+  EXTRA_LARGE: 28,
 };
 
 const DIMENSION = {

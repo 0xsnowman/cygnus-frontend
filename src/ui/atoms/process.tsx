@@ -9,7 +9,7 @@ interface IProcess {
 
 const Process: React.FC<IProcess> = ({
   value,
-  height = 4,
+  height = 6,
   borderRadius,
   transition = 0.4,
 }) => {
@@ -20,13 +20,6 @@ const Process: React.FC<IProcess> = ({
         borderRadius: borderRadius,
       }}
     >
-      <div
-        className="atom-process__line"
-        style={{
-          borderRight: "1px solid white",
-            width: "85%"
-        }}
-      >
         <div
           className="atom-process__fill"
           style={{
@@ -37,7 +30,6 @@ const Process: React.FC<IProcess> = ({
           }}
         ></div>
       </div>
-    </div>
   );
 };
 
