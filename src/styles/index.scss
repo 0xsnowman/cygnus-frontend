@@ -5,8 +5,9 @@
 
 body {
   margin: 0px;
-  background: url("../assets/backgrounds/blue-nebula.svg"), #111;
-  background-position:0 300px;
+  background: url("../assets/backgrounds/purple-nebula.svg"), url("../assets/backgrounds/blue-nebula.svg");
+  background-position: 0px -1100px, center;
+  background-color: #111;
   background-repeat: no-repeat;
 
 }

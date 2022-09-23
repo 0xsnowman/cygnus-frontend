@@ -27,7 +27,6 @@ const LendingPoolCard = () => {
       onClick={() => {
         navigate("/1");
       }}
-      border="1px solid #0d0d1f"
     >
       <Box
         background="transparent linear-gradient(180deg, #E84142 0%, #742121 100%) 0% 0% no-repeat padding-box"
@@ -94,7 +93,7 @@ const LendingPoolCard = () => {
       {/* ------------------ CARD START --------------- */}
 
       <Box
-        background="linear-gradient(180deg, rgba(1,1,1,0.6) 0%, rgba(13,13,31,0.3) 100%)"
+        background="linear-gradient(180deg, rgba(1,1,1,0.6) 0%, rgba(13,13,31,0.4) 100%)"
         padding={Dimension.PADDING.MEDIUM}
       >
         <Box padding={Dimension.PADDING.SEMI_SMALL} />
@@ -109,7 +108,7 @@ const LendingPoolCard = () => {
 
         <Grid>
           <GridItem columns={12}>
-            <Text color="gray" fontSize="EXTRA_SMALL" fontWeight="SICK">
+            <Text color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
               Total Projected USDC APR ⓘ
             </Text>
           </GridItem>
@@ -128,7 +127,7 @@ const LendingPoolCard = () => {
         {/*
           <Grid>
             <GridItem columns={12}>
-              <Text color="gray" fontSize="EXTRA_SMALL" fontWeight="SICK">
+              <Text color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
                 Projected Leveraged LP APR (7x) ⓘ
               </Text>
             </GridItem>
@@ -151,7 +150,7 @@ const LendingPoolCard = () => {
             <GridItem columns={4}>
               <Text
                 center
-                color="grey"
+                color="#A8A8A8"
                 fontSize="EXTRA_SMALL"
                 fontWeight="SICK"
               >
@@ -161,7 +160,7 @@ const LendingPoolCard = () => {
             <GridItem columns={4}>
               <Text
                 center
-                color="grey"
+                color="#A8A8A8"
                 fontWeight="SICK"
                 fontSize="EXTRA_SMALL"
               >
@@ -172,7 +171,7 @@ const LendingPoolCard = () => {
             <GridItem columns={4}>
               <Text
                 center
-                color="grey"
+                color="#A8A8A8"
                 fontSize="EXTRA_SMALL"
                 fontWeight="SICK"
               >
@@ -182,7 +181,7 @@ const LendingPoolCard = () => {
           </Grid>
         </Box>
 
-        <hr color="grey" />
+        <hr color="#A8A8A8" />
 
         {/* PRICE */}
 
@@ -201,7 +200,7 @@ const LendingPoolCard = () => {
             <GridItem columns={4}>
               <Text
                 center
-                color="grey"
+                color="#A8A8A8"
                 fontSize="EXTRA_SMALL"
                 fontWeight="SICK"
               >
@@ -222,7 +221,7 @@ const LendingPoolCard = () => {
           </Grid>
         </Box>
 
-        <hr color="grey" />
+        <hr color="#A8A8A8" />
 
         {/* ------------ TOTAL SUPPLY ------------ */}
 
@@ -241,7 +240,7 @@ const LendingPoolCard = () => {
             <GridItem columns={4}>
               <Text
                 center
-                color="gray"
+                color="#A8A8A8"
                 fontSize="EXTRA_SMALL"
                 fontWeight="SICK"
               >
@@ -261,7 +260,7 @@ const LendingPoolCard = () => {
           </Grid>
         </Box>
 
-        <hr color="grey" />
+        <hr color="#A8A8A8" />
 
         {/* ------------ TOTAL BALANCE ------------ */}
 
@@ -280,7 +279,7 @@ const LendingPoolCard = () => {
             <GridItem columns={4}>
               <Text
                 center
-                color="gray"
+                color="#A8A8A8"
                 fontSize="EXTRA_SMALL"
                 fontWeight="SICK"
               >
@@ -300,7 +299,7 @@ const LendingPoolCard = () => {
           </Grid>
         </Box>
 
-        <hr color="grey" />
+        <hr color="#A8A8A8" />
 
         {/* ------------ 24H VOLUME ------------ */}
 
@@ -319,7 +318,7 @@ const LendingPoolCard = () => {
             <GridItem columns={4}>
               <Text
                 center
-                color="gray"
+                color="#A8A8A8"
                 fontSize="EXTRA_SMALL"
                 fontWeight="SICK"
               >
@@ -345,18 +344,18 @@ const LendingPoolCard = () => {
 
         <Flex flexDirection="column" justifyContent="space-between">
           <Flex justifyContent="space-between">
-            <Text color="gray" fontSize="EXTRA_SMALL" fontWeight="SICK">
+            <Text color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
               Current USDC Borrows
             </Text>
             <Text color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
-              $5238
+              $5,238
             </Text>
           </Flex>
           <Box paddingVertical={8}>
             <Process value={0.4} borderRadius="20px" />
           </Box>
           <Flex justifyContent="space-between">
-            <Text color="gray" fontSize="EXTRA_SMALL" fontWeight="SICK">
+            <Text color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
               Utilization Rate
             </Text>
 
@@ -366,10 +365,11 @@ const LendingPoolCard = () => {
           </Flex>
         </Flex>
 
-        <Box paddingVertical={Dimension.PADDING.MEDIUM} />
+        <Box paddingVertical={Dimension.PADDING.SMALL} />
 
         {/* ------------ LEVERAGED LP APR ------------ */}
 
+    {/* 
         <Box
           paddingVertical={Dimension.PADDING.MEDIUM}
           borderRadius={Dimension.BORDER_RADIUS.EXTRA_LARGE}
@@ -462,7 +462,10 @@ const LendingPoolCard = () => {
             </Box>
           </Flex>
         </Box>
+        */}
+
       </Box>
+
       <Box backgroundColor="#0d0d1f" padding={Dimension.PADDING.MEDIUM}>
         <Flex justifyContent="space-between" alignItems="center">
           <Text fontSize="EXTRA_SMALL" fontWeight="SICK">
