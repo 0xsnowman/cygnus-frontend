@@ -10,8 +10,15 @@ import Dimension from "../../config/dimension";
 
 const Header = () => {
   const context = useWeb3React();
-  const { library, chainId, account, activate, deactivate, active, error } =
-    context;
+  const {
+    library,
+    chainId,
+    account,
+    activate,
+    deactivate,
+    active,
+    error
+  } = context;
   // const [ethBalance, setETHBalance] = useState();
 
   const metamaskConnect = () => {
