@@ -65,6 +65,32 @@ const LendingPoolTab = () => {
                 fontWeight="SICK"
                 color="whitesmoke"
               >
+                LP Token Price ⓘ
+              </Text>
+            </Box>
+            <Box
+              paddingHorizontal={Dimension.PADDING.SMALL}
+              paddingVertical={Dimension.PADDING.EXTRA_SMALL}
+            >
+              <Text
+                center
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+                color="rgb(22, 206, 185)"
+              >
+                $4.25
+              </Text>
+            </Box>
+          </Flex>
+            <Box border="1px solid white"></Box>
+          <Flex flexDirection="column">
+            <Box padding={Dimension.PADDING.SMALL}>
+              <Text
+                center
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+                color="whitesmoke"
+              >
                 Projected USDC APR ⓘ
               </Text>
             </Box>
@@ -122,31 +148,6 @@ const LendingPoolTab = () => {
             >
               <Text center fontSize="EXTRA_SMALL" fontWeight="SICK">
                 95%
-              </Text>
-            </Box>
-          </Flex>
-          <Flex flexDirection="column">
-            <Box padding={Dimension.PADDING.SMALL}>
-              <Text
-                center
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-                color="whitesmoke"
-              >
-                LP Token Price ⓘ
-              </Text>
-            </Box>
-            <Box
-              paddingHorizontal={Dimension.PADDING.SMALL}
-              paddingVertical={Dimension.PADDING.EXTRA_SMALL}
-            >
-              <Text
-                center
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-                color="rgb(22, 206, 185)"
-              >
-                $4.25
               </Text>
             </Box>
           </Flex>

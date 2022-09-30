@@ -5,6 +5,8 @@ import { Flex, Container, Logo, Box } from "../atoms";
 import { Button, Link } from "../molecules";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
+import EthLogo from "../../assets/icons/eth-logo.png";
+import { Icon } from "../atoms"
 
 const Header = () => {
   const context = useWeb3React();
@@ -17,7 +19,8 @@ const Header = () => {
       deactivate();
     } else {
       const metamaskConnector = new InjectedConnector({
-        supportedChainIds: [43113, 43114],
+        // Localhost 31337
+        supportedChainIds: [43113, 43114, 31337],
       });
       activate(metamaskConnector);
     }
@@ -57,10 +60,12 @@ const Header = () => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Logo />
+            <Box>
+              <Logo />
+            </Box>
             <Button
-              backgroundColor="#08161A"
-              color="#15C7B3"
+              backgroundColor="#111"
+              color="whitesmoke"
               onClick={() => {
                 metamaskConnect();
               }}
@@ -68,10 +73,10 @@ const Header = () => {
               {error instanceof UnsupportedChainIdError
                 ? "Wrong NET"
                 : account
-                ? `${account.substring(0, 6)}...${account.substring(
+                  ? `${account.substring(0, 6)}...${account.substring(
                     account.length - 4
                   )}`
-                : "Connect Wallet"}
+                : "Connect"}
             </Button>
             <Box
               position="absolute"
@@ -84,18 +89,26 @@ const Header = () => {
                 flexDirection="row"
                 alignItems="center"
                 justifyContent="center"
-                gap={30}
+                gap={40}
                 height="100%"
               >
+                <Link
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
+                  Terminal
+                </Link>
+                <Link>Dashboard</Link>
                 <Link
                   onClick={() => {
                     navigate("/stake");
                   }}
                 >
-                  STAKING
+                  xCYG
                 </Link>
-                <Link>PORTFOLIO</Link>
-                <Link>GOVERNANCE</Link>
+                <Link>Governance</Link>
+                <Link>Docs</Link>
               </Flex>
             </Box>
           </Flex>

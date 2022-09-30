@@ -14,6 +14,7 @@
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
     "ethers": "^5.7.0",
+    "node-gyp": "^9.1.0",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-backdrop-filter": "^2.1.0",

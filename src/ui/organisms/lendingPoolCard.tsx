@@ -17,6 +17,9 @@ import funnyArrow from "../../assets/images/arrow.png";
 
 import astronaut from "../../assets/icons/astronaut.png";
 
+// @ts-ignore
+import BackdropFilter from "react-backdrop-filter";
+
 const LendingPoolCard = () => {
   const navigate = useNavigate();
   return (
@@ -29,7 +32,7 @@ const LendingPoolCard = () => {
       }}
     >
       <Box
-        background="transparent linear-gradient(180deg, #E84142 0%, #742121 100%) 0% 0% no-repeat padding-box"
+        background="transparent linear-gradient(180deg, #E84142 0%, #742121 100%)"
         padding={Dimension.PADDING.MEDIUM}
         height="75px"
       >

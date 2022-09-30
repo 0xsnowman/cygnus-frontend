@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
-import { Container, Flex, Grid, GridItem, Text } from "../atoms";
+import { Container, Flex, Grid, GridItem, Text, Box } from "../atoms";
 import { Button, Page } from "../molecules";
 import { LendingPoolCard, LendingPoolTab } from "../organisms";
+
 
 import Dimension from "../../config/dimension";
 
@@ -12,22 +13,33 @@ const Home = () => {
   return (
     <Page>
       <Container>
+        <Box paddingVertical={60} />
         <Flex flexDirection="column" gap={Dimension.GAP.LARGE}>
-          <Flex flexDirection="column" justifyContent="flex-end" alignItems="center" gap={10}>
-            <Text center fontSize="EXTRA_LARGE" fontWeight="BOLD">
-              Lending Pool
-            </Text>
-            <Flex>
-              <Button>Strategy</Button>
-              <Button>Deposit Asset</Button>
-              <Button>Sort By</Button>
-              <Button
-                onClick={() => {
-                  setPoolView(!poolView);
-                }}
-              >
-                Change View
-              </Button>
+          <Flex
+            flexDirection="column"
+            justifyContent="flex-end"
+            alignItems="center"
+            gap={10}
+          >
+            <Flex justifyContent="space-between" width="100%">
+              <Flex alignItems="center">
+                <Box>
+                  <Text fontSize="MEDIUM" color="whitesmoke">
+                    Lending Pools
+                  </Text>
+                </Box>
+              </Flex>
+              <Flex>
+                <Button>Deposit Asset</Button>
+                <Button>Sort By</Button>
+                <Button
+                  onClick={() => {
+                    setPoolView(!poolView);
+                  }}
+                >
+                  Change View
+                </Button>
+              </Flex>
             </Flex>
           </Flex>
           {poolView ? (
