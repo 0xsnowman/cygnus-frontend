@@ -17,7 +17,7 @@ const Link: React.FC<ILinkProps> = ({
 }) => {
   return (
     <Box onClick={onClick} color="#FFFFFF70" className="molecule-link">
-      <Text fontSize="SMALL">{children}</Text>
+      <Text fontSize="SMALL" fontWeight="SICK">{children}</Text>
       {iconSrc !== "" ? <Icon src={iconSrc} size="LINK" /> : <></>}
     </Box>
   );

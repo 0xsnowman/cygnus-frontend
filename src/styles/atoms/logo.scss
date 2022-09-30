@@ -1,3 +1,7 @@
 .atom-logo {
-  height: 48px;
+  display: flex;
+
+  &:hover { 
+    cursor: pointer;
+  }
 }

@@ -2,8 +2,14 @@ import React from "react";
 
 import { Flex, Container, Box, Text } from "../atoms";
 import { Link } from "../molecules";
+import Dimension from "../../config/dimension";
 
 import coinPng from "../../assets/icons/coin.png";
+import gitbook from "../../assets/icons/gitbook.png";
+import github from "../../assets/icons/github.png";
+import discord from "../../assets/icons/discord.png";
+import twitter from "../../assets/icons/twitter.png";
+import logo from "../../assets/images/logo.png"
 
 const Footer = () => {
   return (
@@ -18,15 +24,18 @@ const Footer = () => {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Text fontSize="LARGE">CYGNUS</Text>
-          <Text fontSize="SMALL">
-              Cygnus copyright@2022
+        <div>
+          <img src={logo} alt='Cyg' width="200px"/>
+        </div>
+          <Text fontSize="SMALL" fontWeight="SICK">
+            ©2022 by Cygnus Finance. All rights reserved
+
           </Text>
-          <Flex justifyContent="space-between" gap={15}>
-            <Link iconSrc={coinPng} />
-            <Link iconSrc={coinPng} />
-            <Link iconSrc={coinPng} />
-            <Link iconSrc={coinPng} />
+          <Flex justifyContent="space-between" gap={Dimension.GAP.LARGE}>
+            <Link iconSrc={gitbook} />
+            <Link iconSrc={github} />
+            <Link iconSrc={discord} />
+            <Link iconSrc={twitter} />
           </Flex>
         </Flex>
       </Container>

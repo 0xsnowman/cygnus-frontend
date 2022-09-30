@@ -31,11 +31,11 @@ const Button: React.FC<IButtonProps> = ({
       className={["molecule-button", className].join(" ")}
       backgroundColor={backgroundColor}
       padding={padding}
-      borderRadius={5}
+      borderRadius={12}
       width={width}
       height={height}
     >
-      <Text fontSize="SMALL" color={color} center>
+      <Text fontSize="SMALL" color={color} fontWeight="SICK" center>
         {children}
       </Text>
     </Box>

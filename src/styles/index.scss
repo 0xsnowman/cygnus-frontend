@@ -5,5 +5,10 @@
 
 body {
   margin: 0px;
+  background: url("../assets/backgrounds/blue-nebula.svg"), url("../assets/backgrounds/purple-nebula.svg");
+  background-position: 0 0, -1200px 600px ;
   background-color: #111;
+  background-repeat: no-repeat;
+  font-family: 'Nova Square', cursive;
+  background-size: cover, cover;
 }

@@ -5,6 +5,8 @@ import { Flex, Container, Logo, Box } from "../atoms";
 import { Button, Link } from "../molecules";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
+import { Icon } from "../atoms";
+import Dimension from "../../config/dimension";
 
 const Header = () => {
   const context = useWeb3React();
@@ -24,7 +26,8 @@ const Header = () => {
       deactivate();
     } else {
       const metamaskConnector = new InjectedConnector({
-        supportedChainIds: [43113, 43114]
+        // Localhost 31337
+        supportedChainIds: [43113, 43114, 31337],
       });
       activate(metamaskConnector);
     }
@@ -53,21 +56,66 @@ const Header = () => {
   return (
     <Box
       className="organism-header"
-      paddingVertical={20}
       position="fixed"
       width="100%"
     >
       <Box position="relative">
         <Container>
           <Flex
-            flexDirection="row"
             alignItems="center"
             justifyContent="space-between"
+            paddingVertical={20}
           >
-            <Logo />
+            <Box padding={Dimension.PADDING.SMALL}></Box>
+            <Box left={0} top={0} width="100%" height="100%">
+              <Flex
+                flexDirection="row"
+                alignItems="center"
+                justifyContent="flex-start"
+                gap={30}
+                height="100%"
+              >
+                <Logo />
+                <Link
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
+                  Terminal
+                </Link>
+                <Link>Dashboard</Link>
+                <Link
+                  onClick={() => {
+                    navigate("/stake");
+                  }}
+                >
+                  CYG Vault
+                </Link>
+                <Link>Governance</Link>
+                <Flex alignItems="center" gap={4}>
+                  <Link>Docs</Link>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </Flex>
+              </Flex>
+            </Box>
             <Button
-              backgroundColor="#08161A"
-              color="#15C7B3"
+              backgroundColor="#111"
+              color="whitesmoke"
+              width="200px"
               onClick={() => {
                 metamaskConnect();
               }}
@@ -78,44 +126,12 @@ const Header = () => {
                 ? `${account.substring(0, 6)}...${account.substring(
                     account.length - 4
                   )}`
-                : "Connect Wallet"}
+                : "Connect"}
             </Button>
-            <Box
-              position="absolute"
-              left={0}
-              top={0}
-              width="100%"
-              height="100%"
-            >
-              <Flex
-                flexDirection="row"
-                alignItems="center"
-                justifyContent="center"
-                gap={30}
-                height="100%"
-              >
-                <Link
-                  onClick={() => {
-                    navigate("/stake");
-                  }}
-                >
-                  STAKING
-                </Link>
-                <Link
-                  onClick={() => {
-                    navigate("/portfolio");
-                  }}
-                >
-                  PORTFOLIO
-                </Link>
-                <Link>GOVERNANCE</Link>
-              </Flex>
-            </Box>
           </Flex>
         </Container>
       </Box>
     </Box>
   );
 };
-
 export default Header;

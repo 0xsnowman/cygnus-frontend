@@ -1,9 +1,7 @@
 .molecule-link {
   transition: 0.5s;
   &:hover {
-    div {
-      color: grey !important;
-      cursor: pointer;
-    }
+    cursor: pointer;
+    filter: drop-shadow(0 0 20px #fff);
   }
 }

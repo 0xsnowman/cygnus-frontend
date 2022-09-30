@@ -7,6 +7,7 @@ const GAP = {
 const PADDING = {
   EXTRA_SMALL: 4,
   SMALL: 8,
+  SEMI_SMALL: 12,
   MEDIUM: 16,
   LARGE: 24
 };
@@ -14,6 +15,7 @@ const PADDING = {
 const ICON = {
   SMALL: 4,
   MEDIUM: 8,
+  SEMI_MEDIUM: 16,
   LARGE: 24,
   TOKEN: 50,
   LINK: 30,
@@ -45,7 +47,8 @@ const BORDER = {
 const BORDER_RADIUS = {
   SMALL: 4,
   MEDIUM: 8,
-  LARGE: 12
+  LARGE: 12,
+  EXTRA_LARGE: 28,
 };
 
 const DIMENSION = {
