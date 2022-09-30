@@ -5,8 +5,8 @@ import { Flex, Container, Logo, Box } from "../atoms";
 import { Button, Link } from "../molecules";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
-import EthLogo from "../../assets/icons/eth-logo.png";
-import { Icon } from "../atoms"
+import { Icon } from "../atoms";
+import Dimension from "../../config/dimension";
 
 const Header = () => {
   const context = useWeb3React();
@@ -49,49 +49,26 @@ const Header = () => {
   return (
     <Box
       className="organism-header"
-      paddingVertical={20}
       position="fixed"
       width="100%"
     >
       <Box position="relative">
         <Container>
           <Flex
-            flexDirection="row"
             alignItems="center"
             justifyContent="space-between"
+            paddingVertical={20}
           >
-            <Box>
-              <Logo />
-            </Box>
-            <Button
-              backgroundColor="#111"
-              color="whitesmoke"
-              onClick={() => {
-                metamaskConnect();
-              }}
-            >
-              {error instanceof UnsupportedChainIdError
-                ? "Wrong NET"
-                : account
-                  ? `${account.substring(0, 6)}...${account.substring(
-                    account.length - 4
-                  )}`
-                : "Connect"}
-            </Button>
-            <Box
-              position="absolute"
-              left={0}
-              top={0}
-              width="100%"
-              height="100%"
-            >
+            <Box padding={Dimension.PADDING.SMALL}></Box>
+            <Box left={0} top={0} width="100%" height="100%">
               <Flex
                 flexDirection="row"
                 alignItems="center"
-                justifyContent="center"
-                gap={40}
+                justifyContent="flex-start"
+                gap={30}
                 height="100%"
               >
+                <Logo />
                 <Link
                   onClick={() => {
                     navigate("/");
@@ -105,17 +82,49 @@ const Header = () => {
                     navigate("/stake");
                   }}
                 >
-                  xCYG
+                  CYG Vault
                 </Link>
                 <Link>Governance</Link>
-                <Link>Docs</Link>
+                <Flex alignItems="center" gap={4}>
+                  <Link>Docs</Link>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </Flex>
               </Flex>
             </Box>
+            <Button
+              backgroundColor="#111"
+              color="whitesmoke"
+              width="200px"
+              onClick={() => {
+                metamaskConnect();
+              }}
+            >
+              {error instanceof UnsupportedChainIdError
+                ? "Wrong NET"
+                : account
+                ? `${account.substring(0, 6)}...${account.substring(
+                    account.length - 4
+                  )}`
+                : "Connect"}
+            </Button>
           </Flex>
         </Container>
       </Box>
     </Box>
   );
 };
-
 export default Header;

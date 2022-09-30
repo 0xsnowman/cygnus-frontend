@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import logoPng from "../../assets/images/logo.png";
+import logoPng from "../../assets/backgrounds/Planet.png";
 
 const Logo = () => {
   const navigate = useNavigate();
 
   return (
-    <div style={{ maxWidth: "200px" }}>
+    <div style={{ maxWidth: "50px" }}>
       <img
         className="atom-logo"
         onClick={() => {

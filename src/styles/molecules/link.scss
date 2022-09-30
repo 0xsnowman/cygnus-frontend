@@ -1,22 +1,8 @@
 .molecule-link {
   transition: 0.5s;
   &:hover {
-    div {
-      color: #a8a8a8 !important;
-      cursor: pointer;
-    }
-    &:after {
-      position: absolute;
-      content: "";
-      height: 2px;
-      left: 0px;
-      bottom: -6px;
-      width: 0px;
-      background-color: #4e7cff;
-      transition: 0.3s;
-    }
-    &:hover::after {
-      width: 100%;
-    }
+
+    cursor: pointer;
+    filter: drop-shadow(0 0 20px #fff);
   }
 }
