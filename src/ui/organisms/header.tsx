@@ -84,6 +84,7 @@ const Header = () => {
                 >
                   CYG Vault
                 </Link>
+                <Link>Prices</Link>
                 <Link>Governance</Link>
                 <Flex alignItems="center" gap={4}>
                   <Link>Docs</Link>

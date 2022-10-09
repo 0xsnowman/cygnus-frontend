@@ -103,7 +103,7 @@ const LendingPoolCard = () => {
 
         {/* ------------------ POOL NAME --------------- */}
 
-        <Text fontSize="MEDIUM">ETH-AVAX</Text>
+        <Text fontSize="MEDIUM">BTC.B-AVAX</Text>
 
         <Box padding={Dimension.PADDING.SEMI_SMALL} />
 
@@ -146,9 +146,7 @@ const LendingPoolCard = () => {
 
         {/* ------------------ ASSET ------------------ */}
 
-        <Box padding={Dimension.PADDING.SMALL} />
-
-        <Box paddingVertical={Dimension.PADDING.SMALL}>
+        <Box paddingVertical={Dimension.PADDING.SMALL} >
           <Grid>
             <GridItem columns={4}>
               <Text
@@ -184,11 +182,9 @@ const LendingPoolCard = () => {
           </Grid>
         </Box>
 
-        <hr color="#A8A8A8" />
-
         {/* PRICE */}
 
-        <Box paddingVertical={Dimension.PADDING.EXTRA_SMALL}>
+        <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
               <Text
@@ -224,11 +220,9 @@ const LendingPoolCard = () => {
           </Grid>
         </Box>
 
-        <hr color="#A8A8A8" />
-
         {/* ------------ TOTAL SUPPLY ------------ */}
 
-        <Box paddingVertical={Dimension.PADDING.EXTRA_SMALL}>
+        <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
               <Text
@@ -263,11 +257,9 @@ const LendingPoolCard = () => {
           </Grid>
         </Box>
 
-        <hr color="#A8A8A8" />
-
         {/* ------------ TOTAL BALANCE ------------ */}
 
-        <Box paddingVertical={Dimension.PADDING.EXTRA_SMALL}>
+        <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
               <Text
@@ -302,11 +294,9 @@ const LendingPoolCard = () => {
           </Grid>
         </Box>
 
-        <hr color="#A8A8A8" />
-
         {/* ------------ 24H VOLUME ------------ */}
 
-        <Box paddingVertical={Dimension.PADDING.EXTRA_SMALL}>
+        <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
               <Text
@@ -341,7 +331,7 @@ const LendingPoolCard = () => {
           </Grid>
         </Box>
 
-        <Box padding={Dimension.PADDING.MEDIUM} />
+        <Box padding={Dimension.PADDING.SMALL} />
 
         {/* ------------ UTILIZATION RATE ------------ */}
 
@@ -368,16 +358,12 @@ const LendingPoolCard = () => {
           </Flex>
         </Flex>
 
-        <Box paddingVertical={Dimension.PADDING.SMALL} />
 
         {/* ------------ LEVERAGED LP APR ------------ */}
 
-    {/* 
         <Box
-          paddingVertical={Dimension.PADDING.MEDIUM}
+          paddingVertical={Dimension.PADDING.SMALL}
           borderRadius={Dimension.BORDER_RADIUS.EXTRA_LARGE}
-          backgroundColor="#1e2633"
-          border="1px solid black"
         >
           <Box paddingVertical={Dimension.PADDING.SMALL}>
             <Text center fontWeight="SICK" fontSize="EXTRA_SMALL">
@@ -385,87 +371,7 @@ const LendingPoolCard = () => {
             </Text>
           </Box>
 
-          <Flex justifyContent="space-around">
-            <Box>
-              <Flex
-                alignItems="center"
-                flexDirection="column"
-                justifyContent="center"
-              >
-                <Box padding={Dimension.PADDING.EXTRA_SMALL} />
-                <Flex>
-                  <Box
-                    backgroundColor="rgba(255, 255, 255, 0.5)"
-                    borderRadius={Dimension.BORDER_RADIUS.EXTRA_LARGE}
-                    paddingHorizontal={Dimension.PADDING.MEDIUM}
-                    paddingVertical={Dimension.PADDING.SMALL}
-                  >
-                    <Text
-                      center
-                      fontSize="EXTRA_SMALL"
-                      fontWeight="SICK"
-                      color="black"
-                    >
-                      1x
-                    </Text>
-                  </Box>
-                </Flex>
-
-                <Box padding={Dimension.PADDING.EXTRA_SMALL} />
-
-                <Box paddingVertical={Dimension.PADDING.EXTRA_SMALL}>
-                  <Text center fontWeight="SICK" fontSize="EXTRA_SMALL">
-                    16.42%
-                  </Text>
-                </Box>
-              </Flex>
-            </Box>
-
-            <Flex
-              alignItems="center"
-              flexDirection="column"
-              justifyContent="center"
-            >
-              <Icon src={arrow} size="LARGE" borderRadius="1px" />
-            </Flex>
-
-            <Box>
-              <Box padding={Dimension.PADDING.EXTRA_SMALL} />
-              <Flex
-                alignItems="center"
-                flexDirection="column"
-                justifyContent="center"
-              >
-                <Box>
-                  <Flex>
-                    <Box
-                      backgroundColor="rgba(255, 255, 255, 0.5)"
-                      borderRadius={Dimension.BORDER_RADIUS.EXTRA_LARGE}
-                      paddingHorizontal={Dimension.PADDING.MEDIUM}
-                      paddingVertical={Dimension.PADDING.SMALL}
-                    >
-                      <Text
-                        center
-                        fontSize="EXTRA_SMALL"
-                        fontWeight="SICK"
-                        color="black"
-                      >
-                        7x
-                      </Text>
-                    </Box>
-                  </Flex>
-                </Box>
-                <Box padding={Dimension.PADDING.EXTRA_SMALL} />
-                <Box padding={Dimension.PADDING.EXTRA_SMALL}>
-                  <Text center fontWeight="SICK" fontSize="EXTRA_SMALL">
-                    44.92%
-                  </Text>
-                </Box>
-              </Flex>
-            </Box>
-          </Flex>
         </Box>
-        */}
 
       </Box>
 

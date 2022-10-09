@@ -13,7 +13,6 @@ const Home = () => {
   return (
     <Page>
       <Container>
-        <Box paddingVertical={60} />
         <Flex flexDirection="column" gap={Dimension.GAP.LARGE}>
           <Flex
             flexDirection="column"
