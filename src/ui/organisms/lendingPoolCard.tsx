@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Icon, Box, Flex, Grid, GridItem, Text, Process } from "../atoms";
 
@@ -20,14 +20,50 @@ import astronaut from "../../assets/icons/astronaut.png";
 // @ts-ignore
 import BackdropFilter from "react-backdrop-filter";
 
+// Ethers
+import { ethers } from "ethers";
+
+import Slider from "@mui/material/Slider";
+
+// Pool
+import { ALL_LENDING_POOLS } from "../../config/contracts";
+import borrowableAbi from "../../abis/borrowable.json";
+import collateralAbi from "../../abis/collateral.json";
+import { useWeb3React } from "@web3-react/core";
+
 const LendingPoolCard = () => {
+  // Replace with props of poolId
+  let pool = ALL_LENDING_POOLS[0];
+  const context = useWeb3React();
+  const { library } = context;
+
+  // THIS IS PROBABLY BAD
+
+  // Build borrowable and collateral ethers contract
+  let borrowable = new ethers.Contract("0x3a8C6A042d6Df68c9143197aCeB185301979081D", borrowableAbi, library);
+  let collateral = new ethers.Contract("0xb9EBEc450f4e5212bE27c3d4B7Cdd05D569Cfa42", collateralAbi, library);
+
+  async function getSupply() { 
+    let supply = collateral.totalSupply().then((response : any) => response);
+    return supply;
+  }
+
+  // State variables from contracts
+  const [totalSupply, setTotalSupply] = useState<string>("");
+
+  console.log("HI");
+  console.log(getSupply().then((response : any) => setTotalSupply((response / 1e18).toLocaleString())));
+
+
+
   const navigate = useNavigate();
+
   return (
     <Box
       className="organism-lendingpoolcard"
       borderRadius={Dimension.BORDER_RADIUS.EXTRA_LARGE}
       position="relative"
-      onClick={() => {
+      onClick={(e) => {
         navigate("/1");
       }}
     >
@@ -50,7 +86,7 @@ const LendingPoolCard = () => {
                 fontWeight="SICK"
                 color="black"
               >
-                Trader Joe
+                {pool.dex}
               </Text>
             </Box>
           </Flex>
@@ -68,7 +104,7 @@ const LendingPoolCard = () => {
                 fontWeight="SICK"
                 color="black"
               >
-                MCV3
+                {pool.strategy}
               </Text>
             </Box>
           </Flex>
@@ -86,7 +122,7 @@ const LendingPoolCard = () => {
                 fontWeight="SICK"
                 color="black"
               >
-                Id: 1
+                {pool.poolId}
               </Text>
             </Box>
           </Flex>
@@ -103,7 +139,7 @@ const LendingPoolCard = () => {
 
         {/* ------------------ POOL NAME --------------- */}
 
-        <Text fontSize="MEDIUM">BTC.B-AVAX</Text>
+        <Text fontSize="MEDIUM">{pool.poolName}</Text>
 
         <Box padding={Dimension.PADDING.SEMI_SMALL} />
 
@@ -112,6 +148,7 @@ const LendingPoolCard = () => {
         <Grid>
           <GridItem columns={12}>
             <Text color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
+              {/* REPLACE with supply APR */}
               Total Projected USDC APR ⓘ
             </Text>
           </GridItem>
@@ -127,26 +164,9 @@ const LendingPoolCard = () => {
 
         {/* ------------ PROJECTED LP APY ------------ */}
 
-        {/*
-          <Grid>
-            <GridItem columns={12}>
-              <Text color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
-                Projected Leveraged LP APR (7x) ⓘ
-              </Text>
-            </GridItem>
-            <GridItem columns={12}>
-              <Box paddingVertical={Dimension.PADDING.SMALL}>
-                <Text color="#E84142" fontSize="MEDIUM" fontWeight="SICK">
-                  16.42%
-                </Text>
-              </Box>
-            </GridItem>
-          </Grid>
-          */}
-
         {/* ------------------ ASSET ------------------ */}
 
-        <Box paddingVertical={Dimension.PADDING.SMALL} >
+        <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
               <Text
@@ -220,43 +240,6 @@ const LendingPoolCard = () => {
           </Grid>
         </Box>
 
-        {/* ------------ TOTAL SUPPLY ------------ */}
-
-        <Box paddingVertical={Dimension.PADDING.SMALL}>
-          <Grid>
-            <GridItem columns={4}>
-              <Text
-                center
-                color="whitesmoke"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
-                19,200
-              </Text>
-            </GridItem>
-            <GridItem columns={4}>
-              <Text
-                center
-                color="#A8A8A8"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
-                Total Supply
-              </Text>
-            </GridItem>
-            <GridItem columns={4}>
-              <Text
-                center
-                color="whitesmoke"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
-                8,934
-              </Text>
-            </GridItem>
-          </Grid>
-        </Box>
-
         {/* ------------ TOTAL BALANCE ------------ */}
 
         <Box paddingVertical={Dimension.PADDING.SMALL}>
@@ -289,6 +272,80 @@ const LendingPoolCard = () => {
                 fontWeight="SICK"
               >
                 $9,123
+              </Text>
+            </GridItem>
+          </Grid>
+        </Box>
+
+        {/* ------------ TOTAL SUPPLY ------------ */}
+
+        <Box paddingVertical={Dimension.PADDING.SMALL}>
+          <Grid>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="whitesmoke"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                19,200
+              </Text>
+            </GridItem>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="#A8A8A8"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                Total Supply
+              </Text>
+            </GridItem>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="whitesmoke"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                {totalSupply}
+              </Text>
+            </GridItem>
+          </Grid>
+        </Box>
+
+        {/* ------------ EXCHANGE RATE ------------ */}
+
+        <Box paddingVertical={Dimension.PADDING.SMALL}>
+          <Grid>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="whitesmoke"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                1.025
+              </Text>
+            </GridItem>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="#A8A8A8"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                Exchange Rate
+              </Text>
+            </GridItem>
+            <GridItem columns={4}>
+              <Text
+                center
+                color="whitesmoke"
+                fontSize="EXTRA_SMALL"
+                fontWeight="SICK"
+              >
+                1.43
               </Text>
             </GridItem>
           </Grid>
@@ -358,21 +415,36 @@ const LendingPoolCard = () => {
           </Flex>
         </Flex>
 
-
         {/* ------------ LEVERAGED LP APR ------------ */}
+
+        <Box padding={Dimension.PADDING.EXTRA_SMALL} />
 
         <Box
           paddingVertical={Dimension.PADDING.SMALL}
           borderRadius={Dimension.BORDER_RADIUS.EXTRA_LARGE}
+          onClick={(e) => e.stopPropagation()}
         >
           <Box paddingVertical={Dimension.PADDING.SMALL}>
             <Text center fontWeight="SICK" fontSize="EXTRA_SMALL">
-              Leveraged LP APR ⓘ
+              Total Projected LP APR ⓘ
             </Text>
           </Box>
-
+          <Box paddingVertical={Dimension.PADDING.SMALL}>
+            <Text color="whitesmoke" fontSize="MEDIUM" fontWeight="SICK" center>
+              4.12%
+            </Text>
+          </Box>
         </Box>
 
+        <Slider
+          defaultValue={1}
+          valueLabelDisplay="auto"
+          step={1}
+          marks
+          min={1}
+          max={13}
+          onClick={(e) => e.stopPropagation()}
+        />
       </Box>
 
       <Box backgroundColor="#0d0d1f" padding={Dimension.PADDING.MEDIUM}>

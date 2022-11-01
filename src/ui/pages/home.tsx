@@ -46,27 +46,6 @@ const Home = () => {
               <GridItem columns={3}>
                 <LendingPoolCard />
               </GridItem>
-              <GridItem columns={3}>
-                <LendingPoolCard />
-              </GridItem>
-              <GridItem columns={3}>
-                <LendingPoolCard />
-              </GridItem>
-              <GridItem columns={3}>
-                <LendingPoolCard />
-              </GridItem>
-              <GridItem columns={3}>
-                <LendingPoolCard />
-              </GridItem>
-              <GridItem columns={3}>
-                <LendingPoolCard />
-              </GridItem>
-              <GridItem columns={3}>
-                <LendingPoolCard />
-              </GridItem>
-              <GridItem columns={3}>
-                <LendingPoolCard />
-              </GridItem>
             </Grid>
           ) : (
             <Flex flexDirection="column" gap={10}>
@@ -82,4 +61,6 @@ const Home = () => {
   );
 };
 
+{/*
+  */}
 export default Home;

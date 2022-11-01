@@ -3,6 +3,8 @@
   flex-direction: column;
   gap: 50px;
   padding: 50px 0px;
+  flex: 1;
+  min-height: 100vh;
   
   &__lending-pools {
 
@@ -13,4 +15,10 @@
       align-items: center;
     }
   }
+}
+
+#root { 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

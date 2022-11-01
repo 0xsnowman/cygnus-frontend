@@ -16,13 +16,13 @@ const Pool = () => {
               <Flex flexDirection="column" flex={1} gap={20}>
                 <Flex gap={10}>
                   <Box backgroundColor="#073549" padding={20}>
-                    <Text>COVERED CALL</Text>
+                    <Text>Trader Joe</Text>
                   </Box>
                   <Box backgroundColor="#073549" padding={20}>
-                    <Text>V2</Text>
+                    <Text>MasterChef V3</Text>
                   </Box>
                 </Flex>
-                <Text fontSize="EXTRA_LARGE">ETH-AVAX-C</Text>
+                <Text fontSize="EXTRA_LARGE">BTC.B-AVAX</Text>
                 <Flex justifyContent="space-between">
                   <Text color="#999">Current Vault Deposits</Text>
                   <Text>13.07K AVAX</Text>
