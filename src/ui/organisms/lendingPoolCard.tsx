@@ -1,60 +1,132 @@
-import React, { useState, useEffect } from "react";
-
-import { Icon, Box, Flex, Grid, GridItem, Text, Process } from "../atoms";
-
-import coinPng from "../../assets/icons/coin.png";
+import React, { useState, useEffect } from 'react';
+import { Box, Flex, Grid, GridItem, Text, Process } from '../atoms';
+import { useNavigate } from 'react-router-dom';
 
 // import { Icons } from "../../assets";
+import Skeleton from '@mui/material/Skeleton';
 
-import Dimension from "../../config/dimension";
-import TokenPair from "../molecules/tokenPair";
-import { useNavigate } from "react-router-dom";
-import avaxLogo from "../../assets/icons/avax-logo.png";
-import btcLogo from "../../assets/icons/btc-logo.png";
-import avaxLogoT from "../../assets/icons/transparent-avax.png";
-import arrow from "../../assets/icons/arrow.png";
-import funnyArrow from "../../assets/images/arrow.png";
 
-import astronaut from "../../assets/icons/astronaut.png";
-
-// @ts-ignore
-import BackdropFilter from "react-backdrop-filter";
+import Dimension from '../../config/dimension';
+import TokenPair from '../molecules/tokenPair';
+import avaxLogo from '../../assets/icons/avax-logo.png';
+import traderJoe from '../../assets/dexes/traderjoe.png';
 
 // Ethers
-import { ethers } from "ethers";
+import { ethers } from 'ethers';
 
-import Slider from "@mui/material/Slider";
+// UI
+import { Tooltip, Slider, IconButton } from '@mui/material';
 
-// Pool
-import { ALL_LENDING_POOLS } from "../../config/contracts";
-import borrowableAbi from "../../abis/borrowable.json";
-import collateralAbi from "../../abis/collateral.json";
-import { useWeb3React } from "@web3-react/core";
+// Pools
+import { ALL_LENDING_POOLS } from '../../config/contracts';
+import { useWeb3React } from '@web3-react/core';
 
-const LendingPoolCard = () => {
-  // Replace with props of poolId
-  let pool = ALL_LENDING_POOLS[0];
+// Abis
+import borrowableAbi from '../../abis/borrowable.json';
+import collateralAbi from '../../abis/collateral.json';
+
+const LendingPoolCard = ({ shuttle, provider }: any) => {
+  // Replace with props of shuttleId
+  const pool = ALL_LENDING_POOLS[shuttle.shuttleId];
+
   const context = useWeb3React();
-  const { library } = context;
-
-  // THIS IS PROBABLY BAD
+  const { account } = context;
 
   // Build borrowable and collateral ethers contract
-  let borrowable = new ethers.Contract("0x3a8C6A042d6Df68c9143197aCeB185301979081D", borrowableAbi, library);
-  let collateral = new ethers.Contract("0xb9EBEc450f4e5212bE27c3d4B7Cdd05D569Cfa42", collateralAbi, library);
-
-  async function getSupply() { 
-    let supply = collateral.totalSupply().then((response : any) => response);
-    return supply;
-  }
+  const borrowable = new ethers.Contract(shuttle.borrowable, borrowableAbi, provider);
+  const collateral = new ethers.Contract(shuttle.collateral, collateralAbi, provider);
 
   // State variables from contracts
-  const [totalSupply, setTotalSupply] = useState<string>("");
+  const [totalSupply, setTotalSupply] = useState<string[]>(['']);
+  const [totalBalance, setTotalBalance] = useState<string[]>(['']);
+  const [exchangeRate, setExchangeRate] = useState<string[]>(['']);
+  const [utilizationRate, setUtilizationRate] = useState<string>('');
+  const [totalBorrows, setTotalBorrows] = useState<string>('');
+  const [lpPrice, setLpPrice] = useState<string>('');
 
-  console.log("HI");
-  console.log(getSupply().then((response : any) => setTotalSupply((response / 1e18).toLocaleString())));
+  // User Holdings of pool tokens
+  const [cygLPBal, setCygLPBal] = useState<string>('');
 
+  /**
+   *  @notice Total Supply of CygUSDC and CygLP
+   */
+  async function getSupply() {
+    const supplyB = ((await borrowable.totalSupply()) / 1e6).toLocaleString(undefined, { minimumFractionDigits: 3 });
+    const supplyC = ((await collateral.totalSupply()) / 1e18).toLocaleString(undefined, { minimumFractionDigits: 3 });
+    setTotalSupply([supplyB, supplyC]);
+  }
 
+  /**
+   *  @notice Total assets of USDC and LP Tokens in Cygnus contracts
+   */
+  async function getTotalBalance() {
+    const totalBalanceB = ((await borrowable.totalBalance()) / 1e6).toLocaleString(undefined, { minimumFractionDigits: 2 });
+    const totalBalanceC = ((await collateral.totalBalance()) / 1e18).toLocaleString(undefined, { minimumFractionDigits: 2 });
+    setTotalBalance([totalBalanceB, totalBalanceC]);
+  }
+
+  /**
+   *  @notice Current exchange rate between asset and pool token
+   */
+  async function getExchangeRate() {
+    const exchangeB = ((await borrowable.exchangeRateStored()) / 1e18).toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+    });
+    const exchangeC = ((await collateral.exchangeRate()) / 1e18).toLocaleString(undefined, {
+      minimumFractionDigits: 4,
+    });
+    setExchangeRate([exchangeB, exchangeC]);
+  }
+
+  /**
+   *  @notice Current Utilization Rate for this pool
+   */
+  async function getUtilizationRate() {
+    const util = ((await borrowable.utilizationRate()) / 1e16).toLocaleString(undefined, { minimumFractionDigits: 2 });
+    setUtilizationRate(util)
+  }
+
+  /**
+   *  @notice Current LP Token Price for this pool
+   */
+  async function getLPTokenPrice() { 
+    const price = ((await collateral.getLPTokenPrice()) / 1e6).toLocaleString();
+    setLpPrice(price);
+  }
+
+  /**
+   *  @notice Total Borrows stored in Borrowable contract
+   */
+  async function getTotalBorrows() { 
+    const borrows = ((await borrowable.totalBorrows()) / 1e6).toLocaleString();
+    setTotalBorrows(borrows);
+  }
+
+  /**
+   *  @notice When component mounts
+   */
+  useEffect(() => {
+    getSupply();
+    getTotalBalance();
+    getExchangeRate();
+    getUtilizationRate()
+    getLPTokenPrice();
+    getTotalBorrows();
+  }, []);
+
+  async function getCygLPBal() {
+    const cygLPBal = collateral.balanceOf(account).then((response: any) => response);
+    return cygLPBal;
+  }
+
+  /**
+   *  @notice Users CYGLP Balance
+   */
+  if (account !== undefined) {
+    getCygLPBal().then((response: any) => {
+      setCygLPBal((response / 1e18).toLocaleString() + ' CygLP');
+    });
+  }
 
   const navigate = useNavigate();
 
@@ -64,7 +136,7 @@ const LendingPoolCard = () => {
       borderRadius={Dimension.BORDER_RADIUS.EXTRA_LARGE}
       position="relative"
       onClick={(e) => {
-        navigate("/1");
+        navigate(`/${pool.shuttleId}/${pool.orbiterId}/${pool.lpToken}`);
       }}
     >
       <Box
@@ -80,13 +152,8 @@ const LendingPoolCard = () => {
               paddingHorizontal={Dimension.PADDING.MEDIUM}
               paddingVertical={Dimension.PADDING.SMALL}
             >
-              <Text
-                center
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-                color="black"
-              >
-                {pool.dex}
+              <Text center fontSize="EXTRA_SMALL" fontWeight="SICK" color="black">
+                {shuttle.orbiterName}
               </Text>
             </Box>
           </Flex>
@@ -98,13 +165,8 @@ const LendingPoolCard = () => {
               paddingHorizontal={Dimension.PADDING.MEDIUM}
               paddingVertical={Dimension.PADDING.SMALL}
             >
-              <Text
-                center
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-                color="black"
-              >
-                {pool.strategy}
+              <Text center fontSize="EXTRA_SMALL" fontWeight="SICK" color="black">
+                {shuttle.strategy}
               </Text>
             </Box>
           </Flex>
@@ -116,13 +178,8 @@ const LendingPoolCard = () => {
               paddingHorizontal={Dimension.PADDING.MEDIUM}
               paddingVertical={Dimension.PADDING.SMALL}
             >
-              <Text
-                center
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-                color="black"
-              >
-                {pool.poolId}
+              <Text center fontSize="EXTRA_SMALL" fontWeight="SICK" color="black">
+                {'ID: ' + shuttle.shuttleId}
               </Text>
             </Box>
           </Flex>
@@ -147,10 +204,12 @@ const LendingPoolCard = () => {
 
         <Grid>
           <GridItem columns={12}>
-            <Text color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
-              {/* REPLACE with supply APR */}
-              Total Projected USDC APR ⓘ
-            </Text>
+            <Flex>
+              <Text color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
+                {/* REPLACE with supply APR */}
+                Total Projected USDC APR ⓘ
+              </Text>
+            </Flex>
           </GridItem>
           <GridItem columns={12}>
             <Box paddingVertical={Dimension.PADDING.SMALL}>
@@ -169,33 +228,18 @@ const LendingPoolCard = () => {
         <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
-              <Text
-                center
-                color="#A8A8A8"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
+              <Text center color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
                 USDC
               </Text>
             </GridItem>
             <GridItem columns={4}>
-              <Text
-                center
-                color="#A8A8A8"
-                fontWeight="SICK"
-                fontSize="EXTRA_SMALL"
-              >
+              <Text center color="#A8A8A8" fontWeight="SICK" fontSize="EXTRA_SMALL">
                 Asset
               </Text>
             </GridItem>
 
             <GridItem columns={4}>
-              <Text
-                center
-                color="#A8A8A8"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
+              <Text center color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
                 ETH/AVAX LP
               </Text>
             </GridItem>
@@ -207,34 +251,19 @@ const LendingPoolCard = () => {
         <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
-              <Text
-                center
-                color="whitesmoke"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
+              <Text center color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
                 $1.00
               </Text>
             </GridItem>
             <GridItem columns={4}>
-              <Text
-                center
-                color="#A8A8A8"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
+              <Text center color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
                 Price
               </Text>
             </GridItem>
 
             <GridItem columns={4}>
-              <Text
-                center
-                color="#16CEB9"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
-                $4.58
+              <Text center color="#16CEB9" fontSize="EXTRA_SMALL" fontWeight="SICK">
+                {'$' + lpPrice}
               </Text>
             </GridItem>
           </Grid>
@@ -245,33 +274,18 @@ const LendingPoolCard = () => {
         <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
-              <Text
-                center
-                color="whitesmoke"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
-                $9213
+              <Text center color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
+                {'$' + totalBalance[0]}
               </Text>
             </GridItem>
             <GridItem columns={4}>
-              <Text
-                center
-                color="#A8A8A8"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
+              <Text center color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
                 Total Balance
               </Text>
             </GridItem>
             <GridItem columns={4}>
-              <Text
-                center
-                color="whitesmoke"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
-                $9,123
+              <Text center color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
+                {totalBalance[1]}
               </Text>
             </GridItem>
           </Grid>
@@ -282,33 +296,18 @@ const LendingPoolCard = () => {
         <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
-              <Text
-                center
-                color="whitesmoke"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
-                19,200
+              <Text center color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
+                {totalSupply[0]}
               </Text>
             </GridItem>
             <GridItem columns={4}>
-              <Text
-                center
-                color="#A8A8A8"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
+              <Text center color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
                 Total Supply
               </Text>
             </GridItem>
             <GridItem columns={4}>
-              <Text
-                center
-                color="whitesmoke"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
-                {totalSupply}
+              <Text center color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
+                {totalSupply[1]}
               </Text>
             </GridItem>
           </Grid>
@@ -319,33 +318,18 @@ const LendingPoolCard = () => {
         <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
-              <Text
-                center
-                color="whitesmoke"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
-                1.025
+              <Text center color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
+                {exchangeRate[0]}
               </Text>
             </GridItem>
             <GridItem columns={4}>
-              <Text
-                center
-                color="#A8A8A8"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
+              <Text center color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
                 Exchange Rate
               </Text>
             </GridItem>
             <GridItem columns={4}>
-              <Text
-                center
-                color="whitesmoke"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
-                1.43
+              <Text center color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
+                {exchangeRate[1]}
               </Text>
             </GridItem>
           </Grid>
@@ -356,32 +340,17 @@ const LendingPoolCard = () => {
         <Box paddingVertical={Dimension.PADDING.SMALL}>
           <Grid>
             <GridItem columns={4}>
-              <Text
-                center
-                color="whitesmoke"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
+              <Text center color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
                 $2193
               </Text>
             </GridItem>
             <GridItem columns={4}>
-              <Text
-                center
-                color="#A8A8A8"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
+              <Text center color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
                 24h Volume
               </Text>
             </GridItem>
             <GridItem columns={4}>
-              <Text
-                center
-                color="whitesmoke"
-                fontSize="EXTRA_SMALL"
-                fontWeight="SICK"
-              >
+              <Text center color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
                 $420
               </Text>
             </GridItem>
@@ -398,11 +367,14 @@ const LendingPoolCard = () => {
               Current USDC Borrows
             </Text>
             <Text color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
-              $5,238
+              {'$' + totalBorrows}
             </Text>
           </Flex>
           <Box paddingVertical={8}>
-            <Process value={0.4} borderRadius="20px" />
+            <Process
+              value={Number(totalBorrows) / (Number(totalBorrows) + Number(totalBalance[0]))}
+              borderRadius="20px"
+            />
           </Box>
           <Flex justifyContent="space-between">
             <Text color="#A8A8A8" fontSize="EXTRA_SMALL" fontWeight="SICK">
@@ -410,7 +382,7 @@ const LendingPoolCard = () => {
             </Text>
 
             <Text color="whitesmoke" fontSize="EXTRA_SMALL" fontWeight="SICK">
-              75%
+              {utilizationRate + '%'}
             </Text>
           </Flex>
         </Flex>
@@ -452,20 +424,17 @@ const LendingPoolCard = () => {
           <Text fontSize="EXTRA_SMALL" fontWeight="SICK">
             Your Position:
           </Text>
-          <Text fontWeight="SICK">--</Text>
+          <Text fontWeight="SICK">{cygLPBal}</Text>
         </Flex>
       </Box>
 
-      <Box
-        position="absolute"
-        top={80}
-        paddingHorizontal={Dimension.PADDING.MEDIUM}
-      >
+      <Box position="absolute" top={80} paddingHorizontal={Dimension.PADDING.MEDIUM}>
         <Flex justifyContent="flex-start">
-          <TokenPair token1={btcLogo} token2={avaxLogo} />
+          <TokenPair token1={pool.token0img} token2={pool.token1img} />
         </Flex>
       </Box>
-    </Box>
+
+     </Box>
   );
 };
 

@@ -23,7 +23,7 @@ const Process: React.FC<IProcess> = ({
         <div
           className="atom-process__fill"
           style={{
-            width: `${value * 185}%`,
+            width: `${value * 100}%`,
             height: height,
             borderRadius: borderRadius,
             transition: `${transition}s`,

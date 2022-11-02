@@ -173,7 +173,7 @@ const LendingPoolTab = () => {
             <svg
               stroke="currentColor"
               fill="grey"
-              stroke-width="0"
+              strokeWidth="0"
               viewBox="0 0 192 512"
               height="16"
               width="16"

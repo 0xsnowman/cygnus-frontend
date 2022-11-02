@@ -4,8 +4,14 @@ import { Container, Flex, Grid, GridItem, Text, Box } from "../atoms";
 import { Button, Page } from "../molecules";
 import { LendingPoolCard, LendingPoolTab } from "../organisms";
 
-
 import Dimension from "../../config/dimension";
+
+import { ethers } from "ethers";
+import { ALL_LENDING_POOLS, POOL_LIST } from "../../config/contracts";
+
+// Avax Provider
+const url = "https://api.avax.network/ext/bc/C/rpc";
+const provider = new ethers.providers.JsonRpcProvider(url);
 
 const Home = () => {
   const [poolView, setPoolView] = useState<boolean>(false);
@@ -41,11 +47,26 @@ const Home = () => {
               </Flex>
             </Flex>
           </Flex>
+          <Grid>
+            {[0, 1, 2, 3, 4, 5, 6].map((item, index) => {
+              return (
+                <Box key={index} paddingVertical={30} paddingHorizontal={7.5}>
+                  <Box width="25px"></Box>
+                </Box>
+              );
+            })}
+          </Grid>
           {poolView ? (
             <Grid gap={Dimension.GAP.LARGE}>
-              <GridItem columns={3}>
-                <LendingPoolCard />
+
+            {POOL_LIST.map((item, index) => { 
+              return (
+              <GridItem key={index} columns={3}>
+                <LendingPoolCard key={index} provider={provider} shuttle={item} />
               </GridItem>
+              )
+            })}
+
             </Grid>
           ) : (
             <Flex flexDirection="column" gap={10}>
@@ -61,6 +82,8 @@ const Home = () => {
   );
 };
 
-{/*
-  */}
+{
+  /*
+   */
+}
 export default Home;

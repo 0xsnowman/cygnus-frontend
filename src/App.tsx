@@ -20,7 +20,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/stake" element={<Stake />} />
-        <Route path="/:poolId" element={<Pool />} />
+        <Route path="/:shuttleId/:orbiterId/:lpTokenPair" element={<Pool />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -19,6 +19,7 @@ const Icon: React.FC<IIconProps> = ({ src, size = "MEDIUM", border = "NONE", bor
         height: DIMENSION.ICON[size],
         border: `${DIMENSION.BORDER[border]}px solid #101418`,
         borderRadius: borderRadius,
+        backgroundColor: "#101418"
       }}
       alt="icon"
     />

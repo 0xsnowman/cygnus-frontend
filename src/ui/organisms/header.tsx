@@ -10,9 +10,15 @@ import Dimension from "../../config/dimension";
 
 const Header = () => {
   const context = useWeb3React();
-  console.log(context);
-  const { library, chainId, account, activate, deactivate, active, error } =
-    context;
+  const {
+    library,
+    chainId,
+    account,
+    activate,
+    deactivate,
+    active,
+    error
+  } = context;
   // const [ethBalance, setETHBalance] = useState();
 
   const metamaskConnect = () => {
@@ -29,7 +35,9 @@ const Header = () => {
 
   useEffect(() => {
     const getETHBalance = () => {
-      library .getBalance(account) .then((balance: any) => {
+      library
+        .getBalance(account)
+        .then((balance: any) => {
           // setETHBalance(balance);
         })
         .catch((err: any) => {
@@ -83,7 +91,6 @@ const Header = () => {
                 >
                   CYG Vault
                 </Link>
-                <Link>Prices</Link>
                 <Link>Governance</Link>
                 <Flex alignItems="center" gap={4}>
                   <Link>Docs</Link>
